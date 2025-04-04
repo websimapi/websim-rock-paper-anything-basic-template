@@ -199,12 +199,14 @@ Is the challenger the winner? Why or why not?`
         historyItem.className = 'history-item';
         
         const result = wasSuccessful ? 'win' : 'lose';
+        const reasonText = resultMessage.textContent.split(wasSuccessful ? `Yes! ${challenger.name} beats ${defending.name}! ` : `Sorry! ${challenger.name} doesn't beat ${defending.name}. `)[1] || '';
         
         historyItem.innerHTML = `
             <div class="history-item-emoji">${defending.emoji}</div>
             <div class="history-item-text">
                 <span class="${result}">${wasSuccessful ? '✓' : '✕'}</span>
                 ${challenger.name} (${challenger.emoji})
+                <div class="history-item-reason">${reasonText}</div>
             </div>
         `;
         

@@ -166,6 +166,13 @@ h1 {
     flex-grow: 1;
 }
 
+.history-item-reason {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 4px;
+    font-style: italic;
+}
+
 .win {
     color: #4CAF50;
 }
