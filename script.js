@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (result.isWinner) {
                 winningStreak++;
-                resultMessage.textContent = `Yes! ${userResponse} beats ${currentEmoji.name}!`;
+                resultMessage.textContent = `Yes! ${userResponse} beats ${currentEmoji.name}! ${result.reason}`;
                 resultMessage.style.color = "#4CAF50";
                 
                 // Find or add the emoji
@@ -211,4 +211,3 @@ Is the challenger the winner? Why or why not?`
         historyList.insertBefore(historyItem, historyList.firstChild);
     }
 });
-

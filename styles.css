@@ -125,6 +125,7 @@ h1 {
     font-size: 1.2rem;
     margin-bottom: 10px;
     min-height: 30px;
+    line-height: 1.4;
 }
 
 #score {
@@ -186,4 +187,3 @@ h1 {
         grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
     }
 }
-
