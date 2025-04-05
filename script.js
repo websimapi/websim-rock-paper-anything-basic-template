@@ -20,13 +20,58 @@ document.addEventListener('DOMContentLoaded', () => {
         { emoji: '🌚', name: 'moon', imageUrl: '' },
         { emoji: '⚡', name: 'lightning', imageUrl: '' },
         { emoji: '🌈', name: 'rainbow', imageUrl: '' },
-        { emoji: '🧊', name: 'ice', imageUrl: '' }
+        { emoji: '🧊', name: 'ice', imageUrl: '' },
+        // Additional emojis
+        { emoji: '🔨', name: 'hammer', imageUrl: '' },
+        { emoji: '🪓', name: 'axe', imageUrl: '' },
+        { emoji: '🪚', name: 'saw', imageUrl: '' },
+        { emoji: '🧲', name: 'magnet', imageUrl: '' },
+        { emoji: '💣', name: 'bomb', imageUrl: '' },
+        { emoji: '🧪', name: 'potion', imageUrl: '' },
+        { emoji: '🧬', name: 'dna', imageUrl: '' },
+        { emoji: '🦠', name: 'microbe', imageUrl: '' },
+        { emoji: '🔬', name: 'microscope', imageUrl: '' },
+        { emoji: '🧫', name: 'petri dish', imageUrl: '' },
+        { emoji: '🧠', name: 'brain', imageUrl: '' },
+        { emoji: '👻', name: 'ghost', imageUrl: '' },
+        { emoji: '🤖', name: 'robot', imageUrl: '' },
+        { emoji: '👽', name: 'alien', imageUrl: '' },
+        { emoji: '🦹', name: 'supervillain', imageUrl: '' },
+        { emoji: '🧚', name: 'fairy', imageUrl: '' },
+        { emoji: '🧜', name: 'mermaid', imageUrl: '' },
+        { emoji: '🧛', name: 'vampire', imageUrl: '' },
+        { emoji: '🧟', name: 'zombie', imageUrl: '' },
+        { emoji: '🦸', name: 'superhero', imageUrl: '' },
+        { emoji: '🦇', name: 'bat', imageUrl: '' },
+        { emoji: '🐺', name: 'wolf', imageUrl: '' },
+        { emoji: '🦁', name: 'lion', imageUrl: '' },
+        { emoji: '🐘', name: 'elephant', imageUrl: '' },
+        { emoji: '🐅', name: 'tiger', imageUrl: '' },
+        { emoji: '🦏', name: 'rhino', imageUrl: '' },
+        { emoji: '🐊', name: 'crocodile', imageUrl: '' },
+        { emoji: '🦅', name: 'eagle', imageUrl: '' },
+        { emoji: '🦂', name: 'scorpion', imageUrl: '' },
+        { emoji: '🕷️', name: 'spider', imageUrl: '' },
+        { emoji: '🦗', name: 'cricket', imageUrl: '' },
+        { emoji: '🌋', name: 'volcano', imageUrl: '' },
+        { emoji: '🏔️', name: 'mountain', imageUrl: '' },
+        { emoji: '🌊', name: 'wave', imageUrl: '' },
+        { emoji: '🏜️', name: 'desert', imageUrl: '' },
+        { emoji: '🌍', name: 'earth', imageUrl: '' },
+        { emoji: '☄️', name: 'comet', imageUrl: '' },
+        { emoji: '🪐', name: 'saturn', imageUrl: '' },
+        { emoji: '🌌', name: 'milky way', imageUrl: '' },
+        { emoji: '🛸', name: 'ufo', imageUrl: '' },
+        { emoji: '⚔️', name: 'swords', imageUrl: '' }
     ];
 
     // Game state
     let currentEmoji = emojis[Math.floor(Math.random() * emojis.length)]; // Randomly select initial emoji
     let winningStreak = 0;
     let conversationHistory = [];
+    let currentEmojiPage = 0;
+    const emojisPerPage = 24; // Number of emojis to show per page
+    let totalEmojiPages = Math.ceil(emojis.length / emojisPerPage);
 
     // DOM elements
     const currentEmojiDisplay = document.getElementById('current-emoji-display');
@@ -39,11 +84,58 @@ document.addEventListener('DOMContentLoaded', () => {
     const streakCount = document.getElementById('streak-count');
     const emojiGrid = document.getElementById('emoji-grid');
     const historyList = document.getElementById('history-list');
+    const prevPageBtn = document.getElementById('prev-page');
+    const nextPageBtn = document.getElementById('next-page');
+    const pageIndicator = document.getElementById('page-indicator');
 
     // Set initial emoji
     currentEmojiDisplay.textContent = currentEmoji.emoji;
     currentEmojiName.textContent = currentEmoji.name;
     generateImageForEmoji(currentEmoji);
+
+    // Display emojis for the current page
+    function displayEmojiPage(page) {
+        emojiGrid.innerHTML = '';
+        const startIndex = page * emojisPerPage;
+        const endIndex = Math.min(startIndex + emojisPerPage, emojis.length);
+        
+        for (let i = startIndex; i < endIndex; i++) {
+            const emojiObj = emojis[i];
+            const emojiItem = document.createElement('div');
+            emojiItem.className = 'emoji-item';
+            emojiItem.textContent = emojiObj.emoji;
+            emojiItem.title = emojiObj.name;
+            emojiItem.addEventListener('click', () => {
+                userInput.value = emojiObj.name;
+            });
+            emojiGrid.appendChild(emojiItem);
+        }
+        
+        // Update page indicator
+        pageIndicator.textContent = `Page ${page + 1} of ${totalEmojiPages}`;
+        
+        // Update button states
+        prevPageBtn.disabled = page === 0;
+        nextPageBtn.disabled = page === totalEmojiPages - 1;
+    }
+
+    // Page navigation event listeners
+    prevPageBtn.addEventListener('click', () => {
+        if (currentEmojiPage > 0) {
+            currentEmojiPage--;
+            displayEmojiPage(currentEmojiPage);
+        }
+    });
+
+    nextPageBtn.addEventListener('click', () => {
+        if (currentEmojiPage < totalEmojiPages - 1) {
+            currentEmojiPage++;
+            displayEmojiPage(currentEmojiPage);
+        }
+    });
+
+    // Initial display of the first page of emojis
+    displayEmojiPage(currentEmojiPage);
 
     // Generate and set image for initial emoji
     async function generateImageForEmoji(emojiObj) {
@@ -68,16 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Populate emoji grid
-    emojis.forEach(emojiObj => {
-        const emojiItem = document.createElement('div');
-        emojiItem.className = 'emoji-item';
-        emojiItem.textContent = emojiObj.emoji;
-        emojiItem.title = emojiObj.name;
-        emojiItem.addEventListener('click', () => {
-            userInput.value = emojiObj.name;
-        });
-        emojiGrid.appendChild(emojiItem);
-    });
+    // displayEmojiPage is now used instead
 
     // Handle user submission
     submitBtn.addEventListener('click', handleSubmission);
@@ -121,15 +204,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     };
                     emojis.push(nextEmoji);
                     
-                    // Add to emoji grid
-                    const emojiItem = document.createElement('div');
-                    emojiItem.className = 'emoji-item';
-                    emojiItem.textContent = nextEmoji.emoji;
-                    emojiItem.title = nextEmoji.name;
-                    emojiItem.addEventListener('click', () => {
-                        userInput.value = nextEmoji.name;
-                    });
-                    emojiGrid.appendChild(emojiItem);
+                    // Add to emoji grid (now needs to update pagination)
+                    totalEmojiPages = Math.ceil(emojis.length / emojisPerPage);
+                    displayEmojiPage(currentEmojiPage);
                 } else {
                     nextEmoji = {
                         emoji: '❓',

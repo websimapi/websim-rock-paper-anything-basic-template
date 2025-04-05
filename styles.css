@@ -135,11 +135,46 @@ h1 {
     color: #555;
 }
 
+.pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 5px 0;
+}
+
+.page-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.page-btn:hover:not(:disabled) {
+    background-color: #3e8e41;
+}
+
+.page-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+#page-indicator {
+    font-size: 1rem;
+    color: #555;
+}
+
 #emoji-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
     gap: 10px;
     margin-bottom: 20px;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 .emoji-item {
