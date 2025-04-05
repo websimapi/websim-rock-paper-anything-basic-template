@@ -6,53 +6,89 @@
 }
 
 body {
-    background-color: #f5f5f5;
+    background-color: #f0f2f5;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     padding: 20px;
+    color: #333;
 }
 
 .container {
-    max-width: 1400px;
+    max-width: 1600px;
     width: 100%;
 }
 
 .game-layout {
     display: flex;
     gap: 30px;
+    align-items: flex-start;
 }
 
 .game-area {
     background-color: white;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    flex: 1;
+    border-radius: 12px;
+    padding: 35px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    flex: 2;
+    display: flex;
+    flex-direction: column;
 }
 
 h1 {
     text-align: center;
+    margin-bottom: 35px;
+    color: #2c3e50;
+    font-size: 3.2rem;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: #34495e;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 8px;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: #7f8c8d;
+    font-weight: 500;
+}
+
+.current-emoji {
+    text-align: center;
     margin-bottom: 30px;
-    color: #333;
-    font-size: 3rem;
 }
 
 .current-display {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
-    margin: 20px 0;
+    gap: 40px;
+    margin: 25px 0;
+    min-height: 220px;
 }
 
 #current-emoji-display {
-    font-size: 6rem;
+    font-size: 7rem;
     transition: transform 0.3s ease;
+    line-height: 1;
 }
 
 #current-emoji-display:hover {
     transform: scale(1.1);
+}
+
+#current-emoji-name {
+    font-size: 1.4rem;
+    color: #555;
+    margin-top: 10px;
+    font-style: italic;
+    min-height: 2em;
 }
 
 .image-container {
@@ -61,8 +97,11 @@ h1 {
     border-radius: 10px;
     overflow: hidden;
     position: relative;
-    border: 1px solid #ddd;
+    border: 2px solid #e0e0e0;
     background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #current-image {
@@ -71,6 +110,11 @@ h1 {
     object-fit: cover;
     object-position: center;
     transition: transform 0.3s ease;
+    display: none;
+}
+
+#current-image[src]:not([src=""]) {
+    display: block;
 }
 
 #current-image:hover {
@@ -82,10 +126,10 @@ h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-left-color: #4CAF50;
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #3498db;
     border-radius: 50%;
     animation: spin 1s linear infinite;
     display: none;
@@ -96,43 +140,59 @@ h1 {
 }
 
 .input-area {
-    margin-bottom: 20px;
-}
-
-.input-area h2 {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-    color: #333;
+    margin-bottom: 30px;
 }
 
 #user-input {
     width: 100%;
-    padding: 15px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    font-size: 1.2rem;
+    padding: 18px;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 1.3rem;
     margin-bottom: 15px;
+    transition: border-color 0.3s;
+}
+
+#user-input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
 }
 
 #submit-btn {
     width: 100%;
-    padding: 15px;
-    background-color: #4CAF50;
+    padding: 18px;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
     color: white;
     border: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
+    border-radius: 6px;
+    font-size: 1.3rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 8px rgba(46, 204, 113, 0.3);
 }
 
-#submit-btn:hover {
-    background-color: #3e8e41;
+#submit-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    box-shadow: 0 6px 12px rgba(46, 204, 113, 0.4);
+    transform: translateY(-2px);
 }
 
-.emoji-selector h3 {
-    margin-bottom: 10px;
-    color: #555;
+#submit-btn:active:not(:disabled) {
+     transform: translateY(0px);
+     box-shadow: 0 2px 4px rgba(46, 204, 113, 0.3);
+}
+
+#submit-btn:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.emoji-selector {
+    margin-bottom: 25px;
 }
 
 .pagination-controls {
@@ -140,21 +200,23 @@ h1 {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
-    padding: 5px 0;
+    padding: 8px 0;
 }
 
 .page-btn {
-    background-color: #4CAF50;
+    background-color: #3498db;
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 8px 15px;
+    padding: 10px 18px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, transform 0.1s;
+    font-size: 1rem;
 }
 
 .page-btn:hover:not(:disabled) {
-    background-color: #3e8e41;
+    background-color: #2980b9;
+    transform: scale(1.05);
 }
 
 .page-btn:disabled {
@@ -164,152 +226,325 @@ h1 {
 }
 
 #page-indicator {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #555;
+    font-weight: 500;
 }
 
 #emoji-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
+    gap: 12px;
     margin-bottom: 20px;
-    max-height: 300px;
+    max-height: 350px;
     overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #fdfdfd;
 }
 
 .emoji-item {
-    font-size: 2rem;
-    padding: 5px;
-    border-radius: 5px;
+    font-size: 2.5rem;
+    padding: 8px;
+    border-radius: 8px;
     text-align: center;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
     position: relative;
+    background-color: #fff;
+    border: 1px solid transparent;
 }
 
 .emoji-item:hover {
-    background-color: #f0f0f0;
+    background-color: #e8f4fd;
     transform: scale(1.1);
+    border-color: #aedbfd;
 }
 
 .emoji-image {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    object-fit: cover;
-    position: absolute;
-    bottom: -5px;
-    right: -5px;
-    border: 1px solid #ddd;
-    background-color: white;
+    display: none;
 }
 
 .history {
     background-color: white;
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 25px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    flex: 1;
+    min-width: 350px;
+    max-width: 500px;
 }
 
 .history h3 {
-    margin-bottom: 15px;
-    color: #555;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #34495e;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
 }
 
 #history-list {
-    max-height: 700px;
+    max-height: calc(100vh - 150px);
     overflow-y: auto;
+    padding-right: 10px;
+}
+
+#history-list::-webkit-scrollbar {
+  width: 8px;
+}
+#history-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+#history-list::-webkit-scrollbar-thumb {
+  background: #bdc3c7;
+  border-radius: 4px;
+}
+#history-list::-webkit-scrollbar-thumb:hover {
+  background: #95a5a6;
 }
 
 .history-item {
-    display: flex;
-    align-items: flex-start;
     padding: 15px;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 10px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    transition: box-shadow 0.2s ease;
 }
 
-.history-item-emoji {
-    font-size: 2rem;
-    margin-right: 15px;
+.history-item:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.history-item-pair {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.history-item-entity {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
+    width: 40%;
 }
 
-.history-item-image {
-    width: 60px;
-    height: 60px;
+.history-emoji {
+    font-size: 2.2rem;
+    line-height: 1;
+}
+
+.history-item-image, .history-item-image-placeholder {
+    width: 50px;
+    height: 50px;
     border-radius: 5px;
     object-fit: cover;
+    background-color: #eee;
+    margin-top: 5px;
 }
 
-.history-item-text {
-    flex-grow: 1;
+.history-name {
+    font-size: 0.9rem;
+    color: #555;
+    word-break: break-word;
+}
+
+.history-vs {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #7f8c8d;
+}
+
+.history-item-details {
+    margin-top: 10px;
+    border-top: 1px dashed #ddd;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.history-result {
+    font-weight: bold;
     font-size: 1.1rem;
+    margin-bottom: 8px;
+    display: block;
 }
 
 .history-item-reason {
     font-size: 0.95rem;
     color: #666;
-    margin-top: 8px;
     font-style: italic;
     line-height: 1.4;
 }
 
 .win {
-    color: #4CAF50;
+    color: #27ae60;
 }
 
 .lose {
-    color: #f44336;
+    color: #c0392b;
 }
 
 .result-area {
-    padding: 20px;
-    border-radius: 5px;
-    margin-top: 25px;
+    padding: 25px;
+    border-radius: 8px;
+    margin-top: 30px;
     text-align: center;
+    background-color: #e8f4fd;
+    border: 1px solid #aedbfd;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #result-message {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     margin-bottom: 15px;
-    min-height: 40px;
+    min-height: 45px;
     line-height: 1.5;
+    font-weight: 500;
 }
 
 #score {
-    font-size: 1.2rem;
-    color: #555;
+    font-size: 1.3rem;
+    color: #34495e;
+    font-weight: 500;
 }
 
-@media (max-width: 1100px) {
+#streak-count {
+    font-weight: bold;
+    color: #e67e22;
+}
+
+@media (max-width: 1200px) {
     .game-layout {
         flex-direction: column;
+        align-items: stretch;
     }
-    
     .history {
         width: 100%;
+        max-width: none;
+        margin-top: 30px;
+        flex: none;
     }
-    
     #history-list {
-        max-height: 400px;
+        max-height: 450px;
     }
 }
 
-@media (max-width: 600px) {
-    .current-display {
-        flex-direction: column;
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
     }
-    
-    h1 {
-        font-size: 2.2rem;
-    }
-    
     .container {
-        padding: 0 10px;
+        padding: 0 5px;
+    }
+    h1 {
+        font-size: 2.5rem;
+    }
+    h2 {
+        font-size: 1.4rem;
+    }
+    h3 {
+        font-size: 1.2rem;
+    }
+    .game-area, .history {
+        padding: 20px;
+    }
+    .current-display {
+        gap: 20px;
+        flex-direction: column;
+        min-height: auto;
+    }
+    #current-emoji-display {
+        font-size: 5.5rem;
+    }
+    .image-container {
+        width: 150px;
+        height: 150px;
+    }
+    #user-input, #submit-btn {
+        padding: 15px;
+        font-size: 1.1rem;
+    }
+    #emoji-grid {
+        grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+        max-height: 250px;
+        gap: 8px;
+    }
+    .emoji-item {
+        font-size: 2rem;
+    }
+    .page-btn {
+        padding: 8px 14px;
+    }
+    #page-indicator {
+        font-size: 1rem;
+    }
+    .history-item-pair {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .history-vs {
+        transform: rotate(90deg);
+        margin: 5px 0;
+    }
+    .history-item-entity {
+        width: 80%;
+    }
+    .result-area {
+        padding: 20px;
+    }
+    #result-message {
+        font-size: 1.2rem;
+    }
+    #score {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+    .game-area, .history {
+        padding: 15px;
+    }
+    #current-emoji-display {
+        font-size: 4.5rem;
+    }
+    .image-container {
+        width: 120px;
+        height: 120px;
+    }
+    #user-input, #submit-btn {
+        padding: 12px;
+        font-size: 1rem;
+    }
+    #emoji-grid {
+        grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+    }
+    .page-btn {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+    }
+    .history-emoji {
+        font-size: 1.8rem;
+    }
+    .history-item-image, .history-item-image-placeholder {
+        width: 40px;
+        height: 40px;
+    }
+    #result-message {
+        font-size: 1.1rem;
+    }
+    #score {
+        font-size: 1rem;
     }
 }
