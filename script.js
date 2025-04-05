@@ -1,347 +1,347 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Initial list of emojis with their names
     const emojis = [
-        { emoji: '🪨', name: 'rock', imageUrl: '' },
-        { emoji: '📄', name: 'paper', imageUrl: '' },
-        { emoji: '✂️', name: 'scissors', imageUrl: '' },
-        { emoji: '🔥', name: 'fire', imageUrl: '' },
-        { emoji: '💧', name: 'water', imageUrl: '' },
-        { emoji: '🌪️', name: 'tornado', imageUrl: '' },
-        { emoji: '🌵', name: 'cactus', imageUrl: '' },
-        { emoji: '🧙‍♂️', name: 'wizard', imageUrl: '' },
-        { emoji: '🐉', name: 'dragon', imageUrl: '' },
-        { emoji: '🗡️', name: 'sword', imageUrl: '' },
-        { emoji: '🛡️', name: 'shield', imageUrl: '' },
-        { emoji: '🧸', name: 'teddy bear', imageUrl: '' },
-        { emoji: '🦈', name: 'shark', imageUrl: '' },
-        { emoji: '🦖', name: 'dinosaur', imageUrl: '' },
-        { emoji: '🚀', name: 'rocket', imageUrl: '' },
-        { emoji: '🌞', name: 'sun', imageUrl: '' },
-        { emoji: '🌚', name: 'moon', imageUrl: '' },
-        { emoji: '⚡', name: 'lightning', imageUrl: '' },
-        { emoji: '🌈', name: 'rainbow', imageUrl: '' },
-        { emoji: '🧊', name: 'ice', imageUrl: '' },
-        { emoji: '🔨', name: 'hammer', imageUrl: '' },
-        { emoji: '🪓', name: 'axe', imageUrl: '' },
-        { emoji: '🪚', name: 'saw', imageUrl: '' },
-        { emoji: '🧲', name: 'magnet', imageUrl: '' },
-        { emoji: '💣', name: 'bomb', imageUrl: '' },
-        { emoji: '🧪', name: 'potion', imageUrl: '' },
-        { emoji: '🧬', name: 'dna', imageUrl: '' },
-        { emoji: '🦠', name: 'microbe', imageUrl: '' },
-        { emoji: '🔬', name: 'microscope', imageUrl: '' },
-        { emoji: '🧫', name: 'petri dish', imageUrl: '' },
-        { emoji: '🧠', name: 'brain', imageUrl: '' },
-        { emoji: '👻', name: 'ghost', imageUrl: '' },
-        { emoji: '🤖', name: 'robot', imageUrl: '' },
-        { emoji: '👽', name: 'alien', imageUrl: '' },
-        { emoji: '🦹', name: 'supervillain', imageUrl: '' },
-        { emoji: '🧚', name: 'fairy', imageUrl: '' },
-        { emoji: '🧜', name: 'mermaid', imageUrl: '' },
-        { emoji: '🧛', name: 'vampire', imageUrl: '' },
-        { emoji: '🧟', name: 'zombie', imageUrl: '' },
-        { emoji: '🦸', name: 'superhero', imageUrl: '' },
-        { emoji: '🦇', name: 'bat', imageUrl: '' },
-        { emoji: '🐺', name: 'wolf', imageUrl: '' },
-        { emoji: '🦁', name: 'lion', imageUrl: '' },
-        { emoji: '🐘', name: 'elephant', imageUrl: '' },
-        { emoji: '🐅', name: 'tiger', imageUrl: '' },
-        { emoji: '🦏', name: 'rhino', imageUrl: '' },
-        { emoji: '🐊', name: 'crocodile', imageUrl: '' },
-        { emoji: '🦅', name: 'eagle', imageUrl: '' },
-        { emoji: '🦂', name: 'scorpion', imageUrl: '' },
-        { emoji: '🕷️', name: 'spider', imageUrl: '' },
-        { emoji: '🦗', name: 'cricket', imageUrl: '' },
-        { emoji: '🐜', name: 'ant', imageUrl: '' },
-        { emoji: '🐝', name: 'bee', imageUrl: '' },
-        { emoji: '🦋', name: 'butterfly', imageUrl: '' },
-        { emoji: '🐌', name: 'snail', imageUrl: '' },
-        { emoji: '🐍', name: 'snake', imageUrl: '' },
-        { emoji: '🐢', name: 'turtle', imageUrl: '' },
-        { emoji: '🐙', name: 'octopus', imageUrl: '' },
-        { emoji: '🦑', name: 'squid', imageUrl: '' },
-        { emoji: '🦀', name: 'crab', imageUrl: '' },
-        { emoji: '🦐', name: 'shrimp', imageUrl: '' },
-        { emoji: '🐡', name: 'blowfish', imageUrl: '' },
-        { emoji: '🐟', name: 'fish', imageUrl: '' },
-        { emoji: '🐬', name: 'dolphin', imageUrl: '' },
-        { emoji: '🐳', name: 'whale', imageUrl: '' },
-        { emoji: '🐎', name: 'horse', imageUrl: '' },
-        { emoji: '🦄', name: 'unicorn', imageUrl: '' },
-        { emoji: '🦓', name: 'zebra', imageUrl: '' },
-        { emoji: '🦌', name: 'deer', imageUrl: '' },
-        { emoji: '🐄', name: 'cow', imageUrl: '' },
-        { emoji: '🐖', name: 'pig', imageUrl: '' },
-        { emoji: '🐏', name: 'ram', imageUrl: '' },
-        { emoji: '🐑', name: 'sheep', imageUrl: '' },
-        { emoji: '🐐', name: 'goat', imageUrl: '' },
-        { emoji: '🐫', name: 'camel', imageUrl: '' },
-        { emoji: '🦒', name: 'giraffe', imageUrl: '' },
-        { emoji: '🦘', name: 'kangaroo', imageUrl: '' },
-        { emoji: '🐃', name: 'water buffalo', imageUrl: '' },
-        { emoji: '🐂', name: 'ox', imageUrl: '' },
-        { emoji: '🐄', name: 'cow', imageUrl: '' },
-        { emoji: '🐁', name: 'mouse', imageUrl: '' },
-        { emoji: '🐀', name: 'rat', imageUrl: '' },
-        { emoji: '🐿️', name: 'chipmunk', imageUrl: '' },
-        { emoji: '🦔', name: 'hedgehog', imageUrl: '' },
-        { emoji: '🐇', name: 'rabbit', imageUrl: '' },
-        { emoji: '🐈', name: 'cat', imageUrl: '' },
-        { emoji: '🐩', name: 'poodle', imageUrl: '' },
-        { emoji: '🐕', name: 'dog', imageUrl: '' },
-        { emoji: '🐔', name: 'chicken', imageUrl: '' },
-        { emoji: '🐧', name: 'penguin', imageUrl: '' },
-        { emoji: '🐦', name: 'bird', imageUrl: '' },
-        { emoji: '🐤', name: 'chick', imageUrl: '' },
-        { emoji: '🦆', name: 'duck', imageUrl: '' },
-        { emoji: '🦢', name: 'swan', imageUrl: '' },
-        { emoji: '🦉', name: 'owl', imageUrl: '' },
-        { emoji: '🐸', name: 'frog', imageUrl: '' },
-        { emoji: '🦎', name: 'lizard', imageUrl: '' },
-        { emoji: '🐾', name: 'paw prints', imageUrl: '' },
-        { emoji: '🌲', name: 'evergreen tree', imageUrl: '' },
-        { emoji: '🌳', name: 'deciduous tree', imageUrl: '' },
-        { emoji: '🌴', name: 'palm tree', imageUrl: '' },
-        { emoji: '🌱', name: 'seedling', imageUrl: '' },
-        { emoji: '🌿', name: 'herb', imageUrl: '' },
-        { emoji: '☘️', name: 'shamrock', imageUrl: '' },
-        { emoji: '🍀', name: 'four leaf clover', imageUrl: '' },
-        { emoji: '🎍', name: 'bamboo', imageUrl: '' },
-        { emoji: '🍄', name: 'mushroom', imageUrl: '' },
-        { emoji: '🌸', name: 'cherry blossom', imageUrl: '' },
-        { emoji: '🌹', name: 'rose', imageUrl: '' },
-        { emoji: '🌻', name: 'sunflower', imageUrl: '' },
-        { emoji: '🌺', name: 'hibiscus', imageUrl: '' },
-        { emoji: '🌷', name: 'tulip', imageUrl: '' },
-        { emoji: '🌼', name: 'blossom', imageUrl: '' },
-        { emoji: '🌾', name: 'sheaf of rice', imageUrl: '' },
-        { emoji: '🍁', name: 'maple leaf', imageUrl: '' },
-        { emoji: '🍂', name: 'fallen leaf', imageUrl: '' },
-        { emoji: '🌰', name: 'chestnut', imageUrl: '' },
-        { emoji: '🌍', name: 'earth', imageUrl: '' },
-        { emoji: '🌋', name: 'volcano', imageUrl: '' },
-        { emoji: '🏔️', name: 'mountain', imageUrl: '' },
-        { emoji: '🌊', name: 'wave', imageUrl: '' },
-        { emoji: '🏜️', name: 'desert', imageUrl: '' },
-        { emoji: '🏝️', name: 'desert island', imageUrl: '' },
-        { emoji: '🏞️', name: 'national park', imageUrl: '' },
-        { emoji: '🏟️', name: 'stadium', imageUrl: '' },
-        { emoji: '🏠', name: 'house', imageUrl: '' },
-        { emoji: '🏢', name: 'office building', imageUrl: '' },
-        { emoji: '🏰', name: 'castle', imageUrl: '' },
-        { emoji: '🏭', name: 'factory', imageUrl: '' },
-        { emoji: '🗼', name: 'tokyo tower', imageUrl: '' },
-        { emoji: '🗽', name: 'statue of liberty', imageUrl: '' },
-        { emoji: '⛩️', name: 'shinto shrine', imageUrl: '' },
-        { emoji: '🕋', name: 'kaaba', imageUrl: '' },
-        { emoji: '🕌', name: 'mosque', imageUrl: '' },
-        { emoji: '🕍', name: 'synagogue', imageUrl: '' },
-        { emoji: '⛪', name: 'church', imageUrl: '' },
-        { emoji: '⛲', name: 'fountain', imageUrl: '' },
-        { emoji: '⛺', name: 'tent', imageUrl: '' },
-        { emoji: '🌃', name: 'night with stars', imageUrl: '' },
-        { emoji: '🌄', name: 'sunrise over mountains', imageUrl: '' },
-        { emoji: '🌅', name: 'sunrise', imageUrl: '' },
-        { emoji: '🌇', name: 'sunset', imageUrl: '' },
-        { emoji: '🌉', name: 'bridge at night', imageUrl: '' },
-        { emoji: '🚂', name: 'steam locomotive', imageUrl: '' },
-        { emoji: '🚃', name: 'railway car', imageUrl: '' },
-        { emoji: '🚄', name: 'high-speed train', imageUrl: '' },
-        { emoji: '🚅', name: 'bullet train', imageUrl: '' },
-        { emoji: '🚆', name: 'train', imageUrl: '' },
-        { emoji: '🚇', name: 'metro', imageUrl: '' },
-        { emoji: '🚈', name: 'light rail', imageUrl: '' },
-        { emoji: '🚉', name: 'station', imageUrl: '' },
-        { emoji: '🚊', name: 'tram', imageUrl: '' },
-        { emoji: '🚝', name: 'monorail', imageUrl: '' },
-        { emoji: '🚞', name: 'mountain railway', imageUrl: '' },
-        { emoji: '🚋', name: 'tram car', imageUrl: '' },
-        { emoji: '🚌', name: 'bus', imageUrl: '' },
-        { emoji: '🚍', name: 'oncoming bus', imageUrl: '' },
-        { emoji: '🚐', name: 'minibus', imageUrl: '' },
-        { emoji: '🚑', name: 'ambulance', imageUrl: '' },
-        { emoji: '🚒', name: 'fire engine', imageUrl: '' },
-        { emoji: '🚓', name: 'police car', imageUrl: '' },
-        { emoji: '🚕', name: 'taxi', imageUrl: '' },
-        { emoji: '🚗', name: 'car', imageUrl: '' },
-        { emoji: '🚚', name: 'delivery truck', imageUrl: '' },
-        { emoji: '🚛', name: 'articulated lorry', imageUrl: '' },
-        { emoji: '🚜', name: 'tractor', imageUrl: '' },
-        { emoji: '🚲', name: 'bicycle', imageUrl: '' },
-        { emoji: '🛴', name: 'kick scooter', imageUrl: '' },
-        { emoji: '🛵', name: 'motor scooter', imageUrl: '' },
-        { emoji: '🏍️', name: 'motorcycle', imageUrl: '' },
-        { emoji: '🚨', name: 'police car light', imageUrl: '' },
-        { emoji: '⛽', name: 'fuel pump', imageUrl: '' },
-        { emoji: '🚦', name: 'traffic light', imageUrl: '' },
-        { emoji: '🚧', name: 'construction', imageUrl: '' },
-        { emoji: '⚓', name: 'anchor', imageUrl: '' },
-        { emoji: '⛵', name: 'sailboat', imageUrl: '' },
-        { emoji: '🛶', name: 'canoe', imageUrl: '' },
-        { emoji: '🚤', name: 'speedboat', imageUrl: '' },
-        { emoji: '🚢', name: 'ship', imageUrl: '' },
-        { emoji: '✈️', name: 'airplane', imageUrl: '' },
-        { emoji: '🚁', name: 'helicopter', imageUrl: '' },
-        { emoji: '🛰️', name: 'satellite', imageUrl: '' },
-        { emoji: '🛸', name: 'ufo', imageUrl: '' },
-        { emoji: '🕰️', name: 'mantelpiece clock', imageUrl: '' },
-        { emoji: '⌚', name: 'watch', imageUrl: '' },
-        { emoji: '⏰', name: 'alarm clock', imageUrl: '' },
-        { emoji: '⏱️', name: 'stopwatch', imageUrl: '' },
-        { emoji: '⏲️', name: 'timer clock', imageUrl: '' },
-        { emoji: '⏳', name: 'hourglass', imageUrl: '' },
-        { emoji: '⌨️', name: 'keyboard', imageUrl: '' },
-        { emoji: '🖱️', name: 'computer mouse', imageUrl: '' },
-        { emoji: '🖲️', name: 'trackball', imageUrl: '' },
-        { emoji: '💻', name: 'laptop', imageUrl: '' },
-        { emoji: '🖥️', name: 'desktop computer', imageUrl: '' },
-        { emoji: '🕹️', name: 'joystick', imageUrl: '' },
-        { emoji: '💾', name: 'floppy disk', imageUrl: '' },
-        { emoji: '💿', name: 'cd', imageUrl: '' },
-        { emoji: '📀', name: 'dvd', imageUrl: '' },
-        { emoji: '📼', name: 'vhs', imageUrl: '' },
-        { emoji: '📷', name: 'camera', imageUrl: '' },
-        { emoji: '📹', name: 'video camera', imageUrl: '' },
-        { emoji: '🎥', name: 'movie camera', imageUrl: '' },
-        { emoji: '🎞️', name: 'film frames', imageUrl: '' },
-        { emoji: '📞', name: 'telephone receiver', imageUrl: '' },
-        { emoji: '☎️', name: 'telephone', imageUrl: '' },
-        { emoji: '📟', name: 'pager', imageUrl: '' },
-        { emoji: '📠', name: 'fax machine', imageUrl: '' },
-        { emoji: '📺', name: 'television', imageUrl: '' },
-        { emoji: '📻', name: 'radio', imageUrl: '' },
-        { emoji: '🎙️', name: 'studio microphone', imageUrl: '' },
-        { emoji: '💡', name: 'light bulb', imageUrl: '' },
-        { emoji: '🔦', name: 'flashlight', imageUrl: '' },
-        { emoji: '🕯️', name: 'candle', imageUrl: '' },
-        { emoji: '💰', name: 'money bag', imageUrl: '' },
-        { emoji: '💳', name: 'credit card', imageUrl: '' },
-        { emoji: '💎', name: 'gem stone', imageUrl: '' },
-        { emoji: '⚖️', name: 'balance scale', imageUrl: '' },
-        { emoji: '🔧', name: 'wrench', imageUrl: '' },
-        { emoji: '🔩', name: 'nut and bolt', imageUrl: '' },
-        { emoji: '⚙️', name: 'gear', imageUrl: '' },
-        { emoji: '🔗', name: 'link', imageUrl: '' },
-        { emoji: '⛓️', name: 'chains', imageUrl: '' },
-        { emoji: '💉', name: 'syringe', imageUrl: '' },
-        { emoji: '💊', name: 'pill', imageUrl: '' },
-        { emoji: '🚬', name: 'cigarette', imageUrl: '' },
-        { emoji: '⚰️', name: 'coffin', imageUrl: '' },
-        { emoji: '🏺', name: 'amphora', imageUrl: '' },
-        { emoji: '🗺️', name: 'world map', imageUrl: '' },
-        { emoji: '🧭', name: 'compass', imageUrl: '' },
-        { emoji: '🧱', name: 'brick', imageUrl: '' },
-        { emoji: '💈', name: 'barber pole', imageUrl: '' },
-        { emoji: '🛢️', name: 'oil drum', imageUrl: '' },
-        { emoji: '🛎️', name: 'bellhop bell', imageUrl: '' },
-        { emoji: '🔑', name: 'key', imageUrl: '' },
-        { emoji: '🗝️', name: 'old key', imageUrl: '' },
-        { emoji: '🚪', name: 'door', imageUrl: '' },
-        { emoji: '🛋️', name: 'couch and lamp', imageUrl: '' },
-        { emoji: '🛌', name: 'person in bed', imageUrl: '' },
-        { emoji: '🧸', name: 'teddy bear', imageUrl: '' },
-        { emoji: '🖼️', name: 'framed picture', imageUrl: '' },
-        { emoji: '🛍️', name: 'shopping bags', imageUrl: '' },
-        { emoji: '🛒', name: 'shopping cart', imageUrl: '' },
-        { emoji: '🎁', name: 'wrapped gift', imageUrl: '' },
-        { emoji: '🎈', name: 'balloon', imageUrl: '' },
-        { emoji: '🎀', name: 'ribbon', imageUrl: '' },
-        { emoji: '🎊', name: 'confetti ball', imageUrl: '' },
-        { emoji: '🎉', name: 'party popper', imageUrl: '' },
-        { emoji: '🎏', name: 'carp streamer', imageUrl: '' },
-        { emoji: '🎎', name: 'japanese dolls', imageUrl: '' },
-        { emoji: '🎐', name: 'wind chime', imageUrl: '' },
-        { emoji: '✉️', name: 'envelope', imageUrl: '' },
-        { emoji: '🧧', name: 'red envelope', imageUrl: '' },
-        { emoji: '📤', name: 'outbox tray', imageUrl: '' },
-        { emoji: '📥', name: 'inbox tray', imageUrl: '' },
-        { emoji: '📦', name: 'package', imageUrl: '' },
-        { emoji: '📫', name: 'mailbox', imageUrl: '' },
-        { emoji: '📮', name: 'postbox', imageUrl: '' },
-        { emoji: '📜', name: 'scroll', imageUrl: '' },
-        { emoji: '📃', name: 'page with curl', imageUrl: '' },
-        { emoji: '📑', name: 'bookmark tabs', imageUrl: '' },
-        { emoji: '📊', name: 'bar chart', imageUrl: '' },
-        { emoji: '📈', name: 'chart increasing', imageUrl: '' },
-        { emoji: '📉', name: 'chart decreasing', imageUrl: '' },
-        { emoji: '📄', name: 'page facing up', imageUrl: '' },
-        { emoji: '📅', name: 'calendar', imageUrl: '' },
-        { emoji: '📆', name: 'tear-off calendar', imageUrl: '' },
-        { emoji: '🗓️', name: 'spiral calendar', imageUrl: '' },
-        { emoji: '📁', name: 'file folder', imageUrl: '' },
-        { emoji: '📂', name: 'open file folder', imageUrl: '' },
-        { emoji: '🗂️', name: 'card index dividers', imageUrl: '' },
-        { emoji: '📰', name: 'newspaper', imageUrl: '' },
-        { emoji: '🗞️', name: 'rolled-up newspaper', imageUrl: '' },
-        { emoji: '📓', name: 'notebook', imageUrl: '' },
-        { emoji: '📔', name: 'notebook with decorative cover', imageUrl: '' },
-        { emoji: '📒', name: 'ledger', imageUrl: '' },
-        { emoji: '📕', name: 'closed book', imageUrl: '' },
-        { emoji: '📗', name: 'green book', imageUrl: '' },
-        { emoji: '📘', name: 'blue book', imageUrl: '' },
-        { emoji: '📙', name: 'orange book', imageUrl: '' },
-        { emoji: '📚', name: 'books', imageUrl: '' },
-        { emoji: '📖', name: 'open book', imageUrl: '' },
-        { emoji: '🔖', name: 'bookmark', imageUrl: '' },
-        { emoji: '🔗', name: 'link', imageUrl: '' },
-        { emoji: '📎', name: 'paperclip', imageUrl: '' },
-        { emoji: '🖇️', name: 'linked paperclips', imageUrl: '' },
-        { emoji: '📐', name: 'triangular ruler', imageUrl: '' },
-        { emoji: '📏', name: 'straight ruler', imageUrl: '' },
-        { emoji: '📌', name: 'pushpin', imageUrl: '' },
-        { emoji: '📍', name: 'round pushpin', imageUrl: '' },
-        { emoji: '🖊️', name: 'pen', imageUrl: '' },
-        { emoji: '🖋️', name: 'fountain pen', imageUrl: '' },
-        { emoji: '🖌️', name: 'paintbrush', imageUrl: '' },
-        { emoji: '🖍️', name: 'crayon', imageUrl: '' },
-        { emoji: '📝', name: 'memo', imageUrl: '' },
-        { emoji: '✏️', name: 'pencil', imageUrl: '' },
-        { emoji: '🔎', name: 'magnifying glass tilted left', imageUrl: '' },
-        { emoji: '🔍', name: 'magnifying glass tilted right', imageUrl: '' },
-        { emoji: '🔐', name: 'locked with key', imageUrl: '' },
-        { emoji: '🔒', name: 'locked', imageUrl: '' },
-        { emoji: '🔓', name: 'unlocked', imageUrl: '' },
+        { emoji: '🪨', name: 'rock', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📄', name: 'paper', imageUrl: '', isGeneratingImage: false },
+        { emoji: '✂️', name: 'scissors', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🔥', name: 'fire', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💧', name: 'water', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌪️', name: 'tornado', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌵', name: 'cactus', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🧙‍♂️', name: 'wizard', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐉', name: 'dragon', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🗡️', name: 'sword', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🛡️', name: 'shield', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🧸', name: 'teddy bear', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦈', name: 'shark', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦖', name: 'dinosaur', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚀', name: 'rocket', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌞', name: 'sun', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌚', name: 'moon', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⚡', name: 'lightning', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌈', name: 'rainbow', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🧊', name: 'ice', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🔨', name: 'hammer', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🪓', name: 'axe', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🪚', name: 'saw', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🧲', name: 'magnet', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💣', name: 'bomb', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🧪', name: 'potion', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🧬', name: 'dna', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦠', name: 'microbe', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🔬', name: 'microscope', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🧫', name: 'petri dish', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🧠', name: 'brain', imageUrl: '', isGeneratingImage: false },
+        { emoji: '👻', name: 'ghost', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🤖', name: 'robot', imageUrl: '', isGeneratingImage: false },
+        { emoji: '👽', name: 'alien', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦹', name: 'supervillain', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🧚', name: 'fairy', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🧜', name: 'mermaid', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🧛', name: 'vampire', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🧟', name: 'zombie', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦸', name: 'superhero', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦇', name: 'bat', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐺', name: 'wolf', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦁', name: 'lion', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐘', name: 'elephant', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐅', name: 'tiger', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦏', name: 'rhino', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐊', name: 'crocodile', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦅', name: 'eagle', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦂', name: 'scorpion', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🕷️', name: 'spider', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦗', name: 'cricket', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐜', name: 'ant', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐝', name: 'bee', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦋', name: 'butterfly', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐌', name: 'snail', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐍', name: 'snake', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐢', name: 'turtle', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐙', name: 'octopus', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦑', name: 'squid', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦀', name: 'crab', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦐', name: 'shrimp', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐡', name: 'blowfish', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐟', name: 'fish', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐬', name: 'dolphin', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐳', name: 'whale', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐎', name: 'horse', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦄', name: 'unicorn', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦓', name: 'zebra', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦌', name: 'deer', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐄', name: 'cow', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐖', name: 'pig', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐏', name: 'ram', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐑', name: 'sheep', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐐', name: 'goat', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐫', name: 'camel', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦒', name: 'giraffe', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦘', name: 'kangaroo', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐃', name: 'water buffalo', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐂', name: 'ox', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐄', name: 'cow', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐁', name: 'mouse', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐀', name: 'rat', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐿️', name: 'chipmunk', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦔', name: 'hedgehog', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐇', name: 'rabbit', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐈', name: 'cat', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐩', name: 'poodle', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐕', name: 'dog', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐔', name: 'chicken', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐧', name: 'penguin', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐦', name: 'bird', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐤', name: 'chick', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦆', name: 'duck', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦢', name: 'swan', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦉', name: 'owl', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐸', name: 'frog', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🦎', name: 'lizard', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🐾', name: 'paw prints', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌲', name: 'evergreen tree', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌳', name: 'deciduous tree', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌴', name: 'palm tree', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌱', name: 'seedling', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌿', name: 'herb', imageUrl: '', isGeneratingImage: false },
+        { emoji: '☘️', name: 'shamrock', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🍀', name: 'four leaf clover', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🎍', name: 'bamboo', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🍄', name: 'mushroom', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌸', name: 'cherry blossom', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌹', name: 'rose', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌻', name: 'sunflower', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌺', name: 'hibiscus', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌷', name: 'tulip', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌼', name: 'blossom', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌾', name: 'sheaf of rice', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🍁', name: 'maple leaf', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🍂', name: 'fallen leaf', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌰', name: 'chestnut', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌍', name: 'earth', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌋', name: 'volcano', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🏔️', name: 'mountain', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌊', name: 'wave', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🏜️', name: 'desert', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🏝️', name: 'desert island', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🏞️', name: 'national park', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🏟️', name: 'stadium', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🏠', name: 'house', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🏢', name: 'office building', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🏰', name: 'castle', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🏭', name: 'factory', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🗼', name: 'tokyo tower', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🗽', name: 'statue of liberty', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⛩️', name: 'shinto shrine', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🕋', name: 'kaaba', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🕌', name: 'mosque', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🕍', name: 'synagogue', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⛪', name: 'church', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⛲', name: 'fountain', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⛺', name: 'tent', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌃', name: 'night with stars', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌄', name: 'sunrise over mountains', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌅', name: 'sunrise', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌇', name: 'sunset', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌉', name: 'bridge at night', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚂', name: 'steam locomotive', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚃', name: 'railway car', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚄', name: 'high-speed train', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚅', name: 'bullet train', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚆', name: 'train', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚇', name: 'metro', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚈', name: 'light rail', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚉', name: 'station', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚊', name: 'tram', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚝', name: 'monorail', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚞', name: 'mountain railway', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚋', name: 'tram car', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚌', name: 'bus', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚍', name: 'oncoming bus', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚐', name: 'minibus', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚑', name: 'ambulance', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚒', name: 'fire engine', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚓', name: 'police car', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚕', name: 'taxi', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚗', name: 'car', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚚', name: 'delivery truck', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚛', name: 'articulated lorry', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚜', name: 'tractor', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚲', name: 'bicycle', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🛴', name: 'kick scooter', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🛵', name: 'motor scooter', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🏍️', name: 'motorcycle', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚨', name: 'police car light', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⛽', name: 'fuel pump', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚦', name: 'traffic light', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚧', name: 'construction', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⚓', name: 'anchor', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⛵', name: 'sailboat', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🛶', name: 'canoe', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚤', name: 'speedboat', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚢', name: 'ship', imageUrl: '', isGeneratingImage: false },
+        { emoji: '✈️', name: 'airplane', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚁', name: 'helicopter', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🛰️', name: 'satellite', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🛸', name: 'ufo', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🕰️', name: 'mantelpiece clock', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⌚', name: 'watch', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⏰', name: 'alarm clock', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⏱️', name: 'stopwatch', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⏲️', name: 'timer clock', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⏳', name: 'hourglass', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⌨️', name: 'keyboard', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🖱️', name: 'computer mouse', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🖲️', name: 'trackball', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💻', name: 'laptop', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🖥️', name: 'desktop computer', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🕹️', name: 'joystick', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💾', name: 'floppy disk', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💿', name: 'cd', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📀', name: 'dvd', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📼', name: 'vhs', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📷', name: 'camera', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📹', name: 'video camera', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🎥', name: 'movie camera', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🎞️', name: 'film frames', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📞', name: 'telephone receiver', imageUrl: '', isGeneratingImage: false },
+        { emoji: '☎️', name: 'telephone', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📟', name: 'pager', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📠', name: 'fax machine', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📺', name: 'television', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📻', name: 'radio', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🎙️', name: 'studio microphone', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💡', name: 'light bulb', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🔦', name: 'flashlight', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🕯️', name: 'candle', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💰', name: 'money bag', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💳', name: 'credit card', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💎', name: 'gem stone', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⚖️', name: 'balance scale', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🔧', name: 'wrench', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🔩', name: 'nut and bolt', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⚙️', name: 'gear', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🔗', name: 'link', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⛓️', name: 'chains', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💉', name: 'syringe', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💊', name: 'pill', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚬', name: 'cigarette', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⚰️', name: 'coffin', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🏺', name: 'amphora', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🗺️', name: 'world map', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🧭', name: 'compass', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🧱', name: 'brick', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💈', name: 'barber pole', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🛢️', name: 'oil drum', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🛎️', name: 'bellhop bell', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🔑', name: 'key', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🗝️', name: 'old key', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🚪', name: 'door', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🛋️', name: 'couch and lamp', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🛌', name: 'person in bed', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🧸', name: 'teddy bear', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🖼️', name: 'framed picture', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🛍️', name: 'shopping bags', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🛒', name: 'shopping cart', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🎁', name: 'wrapped gift', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🎈', name: 'balloon', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🎀', name: 'ribbon', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🎊', name: 'confetti ball', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🎉', name: 'party popper', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🎏', name: 'carp streamer', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🎎', name: 'japanese dolls', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🎐', name: 'wind chime', imageUrl: '', isGeneratingImage: false },
+        { emoji: '✉️', name: 'envelope', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🧧', name: 'red envelope', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📤', name: 'outbox tray', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📥', name: 'inbox tray', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📦', name: 'package', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📫', name: 'mailbox', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📮', name: 'postbox', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📜', name: 'scroll', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📃', name: 'page with curl', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📑', name: 'bookmark tabs', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📊', name: 'bar chart', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📈', name: 'chart increasing', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📉', name: 'chart decreasing', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📄', name: 'page facing up', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📅', name: 'calendar', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📆', name: 'tear-off calendar', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🗓️', name: 'spiral calendar', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📁', name: 'file folder', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📂', name: 'open file folder', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🗂️', name: 'card index dividers', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📰', name: 'newspaper', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🗞️', name: 'rolled-up newspaper', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📓', name: 'notebook', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📔', name: 'notebook with decorative cover', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📒', name: 'ledger', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📕', name: 'closed book', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📗', name: 'green book', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📘', name: 'blue book', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📙', name: 'orange book', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📚', name: 'books', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📖', name: 'open book', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🔖', name: 'bookmark', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🔗', name: 'link', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📎', name: 'paperclip', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🖇️', name: 'linked paperclips', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📐', name: 'triangular ruler', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📏', name: 'straight ruler', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📌', name: 'pushpin', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📍', name: 'round pushpin', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🖊️', name: 'pen', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🖋️', name: 'fountain pen', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🖌️', name: 'paintbrush', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🖍️', name: 'crayon', imageUrl: '', isGeneratingImage: false },
+        { emoji: '📝', name: 'memo', imageUrl: '', isGeneratingImage: false },
+        { emoji: '✏️', name: 'pencil', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🔎', name: 'magnifying glass tilted left', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🔍', name: 'magnifying glass tilted right', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🔐', name: 'locked with key', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🔒', name: 'locked', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🔓', name: 'unlocked', imageUrl: '', isGeneratingImage: false },
         // Added more emojis
-        { emoji: '✨', name: 'sparkles', imageUrl: '' },
-        { emoji: '⭐', name: 'star', imageUrl: '' },
-        { emoji: '🌟', name: 'glowing star', imageUrl: '' },
-        { emoji: '💫', name: 'dizzy', imageUrl: '' },
-        { emoji: '💥', name: 'collision', imageUrl: '' },
-        { emoji: '💨', name: 'dashing away', imageUrl: '' },
-        { emoji: '💦', name: 'sweat droplets', imageUrl: '' },
-        { emoji: '💯', name: 'hundred points', imageUrl: '' },
-        { emoji: '🕳️', name: 'hole', imageUrl: '' },
-        { emoji: '💫', name: 'dizzy symbol', imageUrl: '' },
-        { emoji: '✨', name: 'sparkles', imageUrl: '' },
-        { emoji: '⭐', name: 'star', imageUrl: '' },
-        { emoji: '🌟', name: 'glowing star', imageUrl: '' },
-        { emoji: '💥', name: 'collision', imageUrl: '' },
-        { emoji: '💨', name: 'dash symbol', imageUrl: '' },
-        { emoji: '💦', name: 'sweat droplets', imageUrl: '' },
-        { emoji: '💯', name: 'hundred points symbol', imageUrl: '' },
-        { emoji: '🕳️', name: 'hole', imageUrl: '' },
-        { emoji: '🌍', name: 'Earth globe Europe-Africa', imageUrl: '' },
-        { emoji: '🌎', name: 'Earth globe Americas', imageUrl: '' },
-        { emoji: '🌏', name: 'Earth globe Asia-Australia', imageUrl: '' },
-        { emoji: '🌑', name: 'new moon', imageUrl: '' },
-        { emoji: '🌒', name: 'waxing crescent moon', imageUrl: '' },
-        { emoji: '🌓', name: 'first quarter moon', imageUrl: '' },
-        { emoji: '🌔', name: 'waxing gibbous moon', imageUrl: '' },
-        { emoji: '🌕', name: 'full moon', imageUrl: '' },
-        { emoji: '🌖', name: 'waning gibbous moon', imageUrl: '' },
-        { emoji: '🌗', name: 'last quarter moon', imageUrl: '' },
-        { emoji: '🌘', name: 'waning crescent moon', imageUrl: '' },
-        { emoji: '🌀', name: 'cyclone', imageUrl: '' },
-        { emoji: '🌫️', name: 'fog', imageUrl: '' },
-        { emoji: '🌬️', name: 'wind face', imageUrl: '' },
-        { emoji: '🌡️', name: 'thermometer', imageUrl: '' },
-        { emoji: '⛱️', name: 'umbrella on ground', imageUrl: '' },
-        { emoji: '❄️', name: 'snowflake', imageUrl: '' },
-        { emoji: '☃️', name: 'snowman', imageUrl: '' },
-        { emoji: '☄️', name: 'comet', imageUrl: '' },
-        { emoji: '🌌', name: 'milky way', imageUrl: '' },
-        { emoji: '🪐', name: 'ringed planet', imageUrl: '' },
-        { emoji: '⚔️', name: 'crossed swords', imageUrl: '' }
+        { emoji: '✨', name: 'sparkles', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⭐', name: 'star', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌟', name: 'glowing star', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💫', name: 'dizzy', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💥', name: 'collision', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💨', name: 'dashing away', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💦', name: 'sweat droplets', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💯', name: 'hundred points', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🕳️', name: 'hole', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💫', name: 'dizzy symbol', imageUrl: '', isGeneratingImage: false },
+        { emoji: '✨', name: 'sparkles', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⭐', name: 'star', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌟', name: 'glowing star', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💥', name: 'collision', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💨', name: 'dash symbol', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💦', name: 'sweat droplets', imageUrl: '', isGeneratingImage: false },
+        { emoji: '💯', name: 'hundred points symbol', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🕳️', name: 'hole', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌍', name: 'Earth globe Europe-Africa', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌎', name: 'Earth globe Americas', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌏', name: 'Earth globe Asia-Australia', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌑', name: 'new moon', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌒', name: 'waxing crescent moon', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌓', name: 'first quarter moon', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌔', name: 'waxing gibbous moon', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌕', name: 'full moon', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌖', name: 'waning gibbous moon', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌗', name: 'last quarter moon', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌘', name: 'waning crescent moon', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌀', name: 'cyclone', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌫️', name: 'fog', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌬️', name: 'wind face', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌡️', name: 'thermometer', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⛱️', name: 'umbrella on ground', imageUrl: '', isGeneratingImage: false },
+        { emoji: '❄️', name: 'snowflake', imageUrl: '', isGeneratingImage: false },
+        { emoji: '☃️', name: 'snowman', imageUrl: '', isGeneratingImage: false },
+        { emoji: '☄️', name: 'comet', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🌌', name: 'milky way', imageUrl: '', isGeneratingImage: false },
+        { emoji: '🪐', name: 'ringed planet', imageUrl: '', isGeneratingImage: false },
+        { emoji: '⚔️', name: 'crossed swords', imageUrl: '', isGeneratingImage: false }
         // ... continue adding more as needed
     ];
 
@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set initial emoji
     currentEmojiDisplay.textContent = currentEmoji.emoji;
     currentEmojiName.textContent = currentEmoji.name;
-    generateImageForEmoji(currentEmoji, currentImage, currentLoadingSpinner);
+    generateImageForEmoji(currentEmoji);
 
     // Display emojis for the current page
     function displayEmojiPage(page) {
@@ -421,62 +421,84 @@ document.addEventListener('DOMContentLoaded', () => {
     displayEmojiPage(currentEmojiPage);
 
     // Generate and set image for initial emoji
-    async function generateImageForEmoji(emojiObj, targetImageElement, targetSpinnerElement) {
-        // Use provided elements or default to main display elements
-        const imgElement = targetImageElement || currentImage;
-        const spinnerElement = targetSpinnerElement || currentLoadingSpinner;
-
-        imgElement.style.display = 'none'; // Hide image initially
-        if (spinnerElement) spinnerElement.style.display = 'block'; // Show spinner
-
-        // Check if image URL already exists
-        if (emojiObj.imageUrl) {
-            imgElement.src = emojiObj.imageUrl;
-            imgElement.onerror = () => { // Handle error loading existing URL
-                console.error(`Failed to load image: ${emojiObj.imageUrl}`);
-                emojiObj.imageUrl = ''; // Clear invalid URL
-                if (spinnerElement) spinnerElement.style.display = 'none';
-                // Optionally show a placeholder or leave blank
-                imgElement.style.display = 'none';
-            };
-            imgElement.onload = () => { // Ensure image is loaded before hiding spinner
-                if (spinnerElement) spinnerElement.style.display = 'none';
-                imgElement.style.display = 'block';
-            }
-            // If src is already set but might be cached, onerror might not fire reliably on first load
-            // Check if image is already loaded/cached and display immediately
-            if (imgElement.complete && imgElement.naturalWidth > 0) {
-                if (spinnerElement) spinnerElement.style.display = 'none';
-                imgElement.style.display = 'block';
-            }
-
-            return; // Exit if URL exists and is being loaded/displayed
+    async function generateImageForEmoji(emojiObj) {
+        // Ensure we don't trigger multiple generations for the same emoji simultaneously
+        if (emojiObj.isGeneratingImage) {
+            console.log(`Image generation already in progress for ${emojiObj.name}`);
+            return; // Exit if generation is already happening
+        }
+        
+        // Update the main display image container immediately if necessary
+        const isCurrent = currentEmoji && currentEmoji.name === emojiObj.name;
+        if (isCurrent) {
+            currentImage.style.display = 'none';
+            currentLoadingSpinner.style.display = 'block';
         }
 
-        // Generate new image if no URL exists
+        // Mark as generating
+        emojiObj.isGeneratingImage = true;
+
+        // Update placeholder images in history for this emoji
+        updateHistoryImages(emojiObj.name, '', true); // Show loading state
+
         try {
+            console.log(`Generating image for: ${emojiObj.name} (${emojiObj.emoji})`);
             const result = await websim.imageGen({
                 prompt: `A detailed illustration of a ${emojiObj.name}, simple clean background, high quality, digital art style`,
                 aspect_ratio: "1:1"
             });
             emojiObj.imageUrl = result.url;
-            imgElement.src = emojiObj.imageUrl;
-            imgElement.onload = () => { // Show image once loaded
-                if (spinnerElement) spinnerElement.style.display = 'none';
-                imgElement.style.display = 'block';
-            };
-            imgElement.onerror = () => { // Handle error loading newly generated URL
-                console.error(`Failed to load newly generated image: ${emojiObj.imageUrl}`);
-                emojiObj.imageUrl = ''; // Clear invalid URL
-                if (spinnerElement) spinnerElement.style.display = 'none';
-                imgElement.style.display = 'none';
-            };
+            console.log(`Generated image URL for ${emojiObj.name}: ${emojiObj.imageUrl}`);
+
+            // Update the main display image if this is still the current emoji
+            if (isCurrent) {
+                currentImage.src = emojiObj.imageUrl;
+                currentImage.style.display = 'block';
+            }
+            
+            // Update images in history list
+            updateHistoryImages(emojiObj.name, emojiObj.imageUrl, false); // Set final image, hide loading
+
         } catch (error) {
-            console.error("Error generating image:", error);
-            emojiObj.imageUrl = ''; // Ensure imageUrl is cleared on error
-            if (spinnerElement) spinnerElement.style.display = 'none';
-            imgElement.style.display = 'none';
+            console.error(`Error generating image for ${emojiObj.name}:`, error);
+            emojiObj.imageUrl = ''; // Reset image URL on error
+
+            // Update images in history list (remove loading state, show placeholder)
+             updateHistoryImages(emojiObj.name, '', false);
+
+        } finally {
+            // Always mark generation as finished
+            emojiObj.isGeneratingImage = false;
+            // Hide loading spinner for the main display if this is the current emoji
+            if (isCurrent) {
+                currentLoadingSpinner.style.display = 'none';
+                // Ensure image display state is correct based on final imageUrl
+                currentImage.style.display = emojiObj.imageUrl ? 'block' : 'none';
+            }
         }
+    }
+
+    function updateHistoryImages(emojiName, imageUrl, isLoading) {
+         const historyImages = historyList.querySelectorAll(`.history-item-image[data-emoji-name="${emojiName.toLowerCase()}"]`);
+         const historyPlaceholders = historyList.querySelectorAll(`.history-item-image-placeholder[data-emoji-name="${emojiName.toLowerCase()}"]`);
+
+         historyImages.forEach(img => {
+             if (isLoading) {
+                 img.style.display = 'none'; // Hide image while loading
+             } else {
+                 if (imageUrl) {
+                     img.src = imageUrl;
+                     img.style.display = 'block';
+                 } else {
+                     img.style.display = 'none'; // Keep hidden if no URL
+                 }
+             }
+         });
+
+         historyPlaceholders.forEach(placeholder => {
+             placeholder.classList.toggle('loading', isLoading); // Add/remove loading class
+             placeholder.style.display = (isLoading || !imageUrl) ? 'block' : 'none'; // Show if loading or no image
+         });
     }
 
     // Handle user submission
@@ -489,6 +511,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function handleSubmission() {
         const userResponse = userInput.value.trim();
+        const lowerCaseResponse = userResponse.toLowerCase();
 
         if (!userResponse) {
             resultMessage.textContent = "Please enter something that would beat the current emoji!";
@@ -503,102 +526,92 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const result = await checkIfBeats(userResponse, currentEmoji);
-            let challengerObjectForHistory; // To store the object used in history
+            let nextEmoji = null; // Define nextEmoji here
 
             if (result.isWinner) {
                 winningStreak++;
                 resultMessage.textContent = `Yes! ${userResponse} beats ${currentEmoji.name}! ${result.reason}`;
                 resultMessage.style.color = "#4CAF50";
 
-                let nextEmoji = uniqueEmojis.find(e => e.name.toLowerCase() === userResponse.toLowerCase());
+                // Try to find an existing emoji matching the user's input name
+                nextEmoji = uniqueEmojis.find(e => e.name.toLowerCase() === lowerCaseResponse);
 
+                // If not found by name, check if the suggested emoji exists
                 if (!nextEmoji && result.suggestedEmoji && result.suggestedEmoji !== '❓') {
-                    // Check if an emoji with the *suggested symbol* already exists
-                    const existingWithEmoji = uniqueEmojis.find(e => e.emoji === result.suggestedEmoji);
-                    if (existingWithEmoji) {
-                        // If found, use the existing object but potentially update its name if different?
-                        // For simplicity, let's just use the existing one. User can refine later if needed.
-                        nextEmoji = existingWithEmoji;
-                        // Ensure name consistency if user input differs slightly but emoji matches
-                        // Optional: nextEmoji.name = userResponse.toLowerCase();
+                    nextEmoji = uniqueEmojis.find(e => e.emoji === result.suggestedEmoji);
+                    // If found by emoji, but name differs, update name for consistency (optional)
+                    // if (nextEmoji) nextEmoji.name = lowerCaseResponse;
+                }
+
+                // If still not found, and we have a suggested emoji, create a new entry
+                if (!nextEmoji && result.suggestedEmoji && result.suggestedEmoji !== '❓') {
+                    nextEmoji = {
+                        emoji: result.suggestedEmoji,
+                        name: lowerCaseResponse,
+                        imageUrl: '',
+                        isGeneratingImage: false
+                    };
+                    uniqueEmojis.push(nextEmoji);
+                    // Update pagination if necessary
+                    totalEmojiPages = Math.ceil(uniqueEmojis.length / emojisPerPage);
+                    if (uniqueEmojis.length > currentEmojiPage * emojisPerPage && uniqueEmojis.length <= (currentEmojiPage + 1) * emojisPerPage) {
+                        displayEmojiPage(currentEmojiPage); // Refresh current page if new item fits
                     } else {
-                        // Create a new emoji object
-                        nextEmoji = {
-                            emoji: result.suggestedEmoji,
-                            name: userResponse.toLowerCase(),
-                            imageUrl: '' // Needs image generation
-                        };
-                        uniqueEmojis.push(nextEmoji);
-                        // Update pagination if necessary
-                        totalEmojiPages = Math.ceil(uniqueEmojis.length / emojisPerPage);
-                        if (uniqueEmojis.length > currentEmojiPage * emojisPerPage && uniqueEmojis.length <= (currentEmojiPage + 1) * emojisPerPage) {
-                            // If the new emoji falls on the current page, refresh it
-                            displayEmojiPage(currentEmojiPage);
-                        } else {
-                            // Otherwise, just update the total pages indicator
-                            pageIndicator.textContent = `Page ${currentEmojiPage + 1} of ${totalEmojiPages}`;
-                            nextPageBtn.disabled = currentEmojiPage === totalEmojiPages - 1;
-                        }
+                        // Just update page count indicator
+                        pageIndicator.textContent = `Page ${currentEmojiPage + 1} of ${totalEmojiPages}`;
+                        nextPageBtn.disabled = currentEmojiPage === totalEmojiPages - 1;
                     }
+                     console.log(`Added new emoji: ${nextEmoji.name} (${nextEmoji.emoji})`);
                 } else if (!nextEmoji) {
-                    // Challenger is abstract or couldn't find a matching emoji
+                    // If no emoji could be found or suggested, create a placeholder
+                     console.log(`Could not find or suggest emoji for: ${userResponse}. Using placeholder.`);
                     nextEmoji = {
                         emoji: '❓',
-                        name: userResponse.toLowerCase(),
-                        imageUrl: '' // No image for abstract concepts
+                        name: lowerCaseResponse,
+                        imageUrl: '',
+                        isGeneratingImage: false
                     };
-                    // Note: We don't add abstract '❓' emojis to the main uniqueEmojis list
+                    // Optionally add placeholder to list or handle differently
+                    // uniqueEmojis.push(nextEmoji); // Decide if you want placeholders in the main list
                 }
 
-                // --- Image Generation before History ---
-                // Ensure the winning emoji (nextEmoji) has an image generated *before* adding to history
-                if (nextEmoji.emoji !== '❓' && !nextEmoji.imageUrl) {
-                    console.log(`Generating image for winner: ${nextEmoji.name}`);
-                    // We use a temporary dummy img/spinner here, as we only need the URL populated.
-                    // The actual display happens later or in history.
-                    await generateImageForEmoji(nextEmoji, null, null);
-                    console.log(`Image generated for ${nextEmoji.name}, URL: ${nextEmoji.imageUrl}`);
-                }
-                // --- End Image Generation ---
+                // Add to history BEFORE generating image for the new currentEmoji
+                addToHistory(currentEmoji, nextEmoji, true, result.reason);
 
-                challengerObjectForHistory = nextEmoji; // Use the determined/created object for history
-                addToHistory(currentEmoji, challengerObjectForHistory, true, result.reason);
-
-                // Update the current emoji for the next round ONLY if it's not abstract
+                // If the winner is a valid emoji (not placeholder), make it the current one
+                // and start generating its image.
                 if (nextEmoji.emoji !== '❓') {
                     currentEmoji = nextEmoji;
                     currentEmojiDisplay.textContent = currentEmoji.emoji;
                     currentEmojiName.textContent = currentEmoji.name;
-                    // Update the main image display (using the generated URL)
+                    // Image will be generated or source updated by this call
+                    generateImageForEmoji(currentEmoji);
+                } else {
+                    resultMessage.textContent += " (Keeping current emoji as winner was abstract)";
+                    // Reset image for current emoji display if needed (it remains the same)
                     currentImage.src = currentEmoji.imageUrl || '';
                     currentImage.style.display = currentEmoji.imageUrl ? 'block' : 'none';
-                    currentLoadingSpinner.style.display = 'none'; // Hide spinner if it was shown
-                } else {
-                    // If the winner was abstract, keep the previous currentEmoji
-                    resultMessage.textContent += " (Keeping current item as winner was abstract)";
+                    currentLoadingSpinner.style.display = 'none';
                 }
-            } else {
-                // User lost
+
+            } else { // Challenger did not win
                 winningStreak = 0;
                 resultMessage.textContent = `Sorry! ${userResponse} doesn't beat ${currentEmoji.name}. ${result.reason}`;
                 resultMessage.style.color = "#f44336";
 
-                // Find or create a temporary object for the challenger for history display
-                challengerObjectForHistory = uniqueEmojis.find(e => e.name.toLowerCase() === userResponse.toLowerCase()) || {
-                    emoji: result.suggestedEmoji || '❓', // Use suggested emoji if available, else '❓'
-                    name: userResponse,
-                    imageUrl: '' // Attempt to generate image only if not abstract and needed
+                // Find or create a temporary object for the challenger to display in history
+                const challengerObj = uniqueEmojis.find(e => e.name.toLowerCase() === lowerCaseResponse) || {
+                    emoji: result.suggestedEmoji && result.suggestedEmoji !== '❓' ? result.suggestedEmoji : '❓', // Use suggested if available
+                    name: lowerCaseResponse,
+                    imageUrl: '', // Losers don't get images generated in this logic
+                    isGeneratingImage: false
                 };
 
-                // Generate image for the losing challenger *if* it has a concrete emoji and no image yet
-                if (challengerObjectForHistory.emoji !== '❓' && !challengerObjectForHistory.imageUrl) {
-                    console.log(`Generating image for losing challenger: ${challengerObjectForHistory.name}`);
-                    // Use dummy elements as we only need the URL for history
-                    await generateImageForEmoji(challengerObjectForHistory, null, null);
-                    console.log(`Image generated for ${challengerObjectForHistory.name}, URL: ${challengerObjectForHistory.imageUrl}`);
-                }
-
-                addToHistory(currentEmoji, challengerObjectForHistory, false, result.reason);
+                addToHistory(currentEmoji, challengerObj, false, result.reason);
+                
+                 // Ensure main display doesn't show loading if it wasn't changed
+                 currentLoadingSpinner.style.display = 'none';
+                 currentImage.style.display = currentEmoji.imageUrl ? 'block' : 'none';
             }
 
             streakCount.textContent = winningStreak;
@@ -607,6 +620,15 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error("Error during submission:", error);
             resultMessage.textContent = "Oops! Something went wrong. Please try again.";
             resultMessage.style.color = "#f44336";
+            // Ensure loading states are reset on error
+             currentLoadingSpinner.style.display = 'none';
+             if(currentEmoji) {
+                currentImage.src = currentEmoji.imageUrl || '';
+                currentImage.style.display = currentEmoji.imageUrl ? 'block' : 'none';
+             } else {
+                 currentImage.style.display = 'none';
+             }
+
         } finally {
             submitBtn.disabled = false;
             userInput.disabled = false;
@@ -639,45 +661,23 @@ Respond ONLY with valid JSON in this exact format:
                 json: true
             });
 
-            let rawResponse = completion.content?.trim();
-            if (!rawResponse || !rawResponse.startsWith('{') || !rawResponse.endsWith('}')) {
-                // Attempt to find JSON within potentially extraneous text (less ideal)
-                const jsonMatch = rawResponse.match(/\{.*\}/s);
-                if (jsonMatch) {
-                    rawResponse = jsonMatch[0];
-                } else {
-                    throw new Error(`Received non-JSON response: ${completion.content}`);
-                }
+            if (!completion.content || !completion.content.startsWith('{') || !completion.content.endsWith('}')) {
+                throw new Error("Received non-JSON response from LLM");
             }
 
-            const result = JSON.parse(rawResponse);
+            const result = JSON.parse(completion.content);
 
-            // Validate structure
             if (typeof result.isWinner !== 'boolean' || typeof result.reason !== 'string' || typeof result.suggestedEmoji !== 'string') {
-                throw new Error(`Parsed JSON has incorrect structure: ${JSON.stringify(result)}`);
+                throw new Error("Parsed JSON has incorrect structure");
             }
 
-            // Sanitize suggestedEmoji: ensure it's a single character or '❓'
-            if (result.suggestedEmoji !== '❓') {
-                const firstChar = [...result.suggestedEmoji][0]; // Handle multi-byte unicode
-                // Basic check if it looks like an emoji (non-alphanumeric, not basic punctuation)
-                // This is imperfect but better than nothing.
-                if (firstChar && firstChar.length === 1 && /\p{Extended_Pictographic}/u.test(firstChar)) {
-                    result.suggestedEmoji = firstChar;
-                } else if (firstChar && firstChar.length > 1 && /\p{Extended_Pictographic}/u.test(firstChar)) {
-                    // Handle multi-character single emojis like flags or complex sequences
-                    result.suggestedEmoji = firstChar; // Keep the sequence if it's a known emoji pattern
-                }
-                else {
-                    console.warn(`LLM suggested invalid emoji '${result.suggestedEmoji}', using '❓'`);
-                    result.suggestedEmoji = '❓';
-                }
+            if (result.suggestedEmoji.length > 2 && result.suggestedEmoji !== '❓') {
+                result.suggestedEmoji = [...result.suggestedEmoji][0];
             }
 
             return result;
         } catch (error) {
             console.error("Error processing LLM response:", error);
-            // Provide a default fallback structure on error
             return {
                 isWinner: false,
                 reason: "Could not determine the outcome due to an internal error.",
@@ -693,43 +693,36 @@ Respond ONLY with valid JSON in this exact format:
         const resultClass = wasSuccessful ? 'win' : 'lose';
         const resultIcon = wasSuccessful ? '✅' : '❌';
 
-        // Ensure we have valid data, provide defaults if necessary
-        const defendingEmoji = defending?.emoji || '❓';
-        const defendingName = defending?.name || 'Unknown';
-        const defendingImageUrl = defending?.imageUrl || '';
+        const challengerEmoji = challenger.emoji || '❓';
+        const challengerName = challenger.name || 'Unknown';
+        // Use imageUrl if available, otherwise it will be updated later by generateImageForEmoji
+        const challengerImageUrl = challenger.imageUrl || '';
+        const challengerNameLower = challengerName.toLowerCase(); // For data attribute
 
-        const challengerEmoji = challenger?.emoji || '❓';
-        const challengerName = challenger?.name || 'Unknown';
-        const challengerImageUrl = challenger?.imageUrl || ''; // Use the potentially newly generated URL
-
-        // --- Image HTML with Fallback ---
-        const defendingImageHtml = defendingImageUrl
-            ? `<img class="history-item-image" src="${defendingImageUrl}" alt="${defendingName}" title="${defendingName}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.style.display='block'; this.nextElementSibling.style.display='none';">`
-            : '';
-        const defendingPlaceholderHtml = `<div class="history-item-image-placeholder" title="${defendingName}" style="${defendingImageUrl ? 'display: none;' : 'display: flex;'}"><span>${defendingEmoji}</span></div>`; // Show emoji in placeholder
-
-        const challengerImageHtml = challengerImageUrl
-            ? `<img class="history-item-image" src="${challengerImageUrl}" alt="${challengerName}" title="${challengerName}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.style.display='block'; this.nextElementSibling.style.display='none';">`
-            : '';
-        const challengerPlaceholderHtml = `<div class="history-item-image-placeholder" title="${challengerName}" style="${challengerImageUrl ? 'display: none;' : 'display: flex;'}"><span>${challengerEmoji}</span></div>`;
+        const defendingImageUrl = defending.imageUrl || '';
+        const defendingNameLower = defending.name.toLowerCase();
 
         historyItem.innerHTML = `
             <div class="history-item-pair">
                 <div class="history-item-entity defending">
-                    <span class="history-emoji">${defendingEmoji}</span>
-                    <div class="image-wrapper">
-                        ${defendingImageHtml}
-                        ${defendingPlaceholderHtml}
+                    <span class="history-emoji">${defending.emoji}</span>
+                    <div class="history-image-wrapper">
+                        <img class="history-item-image" src="${defendingImageUrl}" alt="${defending.name}" title="${defending.name}" data-emoji-name="${defendingNameLower}" style="display: ${defendingImageUrl ? 'block' : 'none'};">
+                        <div class="history-item-image-placeholder" title="${defending.name}" data-emoji-name="${defendingNameLower}" style="display: ${defendingImageUrl ? 'none' : 'block'};">
+                             <div class="history-spinner"></div>
+                        </div>
                     </div>
-                    <span class="history-name">${defendingName}</span>
+                    <span class="history-name">${defending.name}</span>
                 </div>
                 <div class="history-vs">vs</div>
                 <div class="history-item-entity challenger">
                     <span class="history-emoji">${challengerEmoji}</span>
-                    <div class="image-wrapper">
-                        ${challengerImageHtml}
-                        ${challengerPlaceholderHtml}
-                    </div>
+                     <div class="history-image-wrapper">
+                        <img class="history-item-image" src="${challengerImageUrl}" alt="${challengerName}" title="${challengerName}" data-emoji-name="${challengerNameLower}" style="display: ${challengerImageUrl ? 'block' : 'none'};">
+                        <div class="history-item-image-placeholder" title="${challengerName}" data-emoji-name="${challengerNameLower}" style="display: ${challengerImageUrl ? 'none' : 'block'};">
+                             <div class="history-spinner"></div>
+                        </div>
+                     </div>
                     <span class="history-name">${challengerName}</span>
                 </div>
             </div>
@@ -738,12 +731,22 @@ Respond ONLY with valid JSON in this exact format:
                 <div class="history-item-reason">${reasonText || 'No reason provided.'}</div>
             </div>
         `;
-        // --- End Image HTML ---
+
+        // If the challenger won and doesn't have an image yet, show the placeholder's loading state
+        if (wasSuccessful && !challengerImageUrl) {
+             const placeholder = historyItem.querySelector(`.challenger .history-item-image-placeholder[data-emoji-name="${challengerNameLower}"]`);
+             if(placeholder) placeholder.classList.add('loading');
+        }
+        // Ensure defending placeholder doesn't show loading unless it's actually loading
+        if (!defending.isGeneratingImage) {
+             const placeholder = historyItem.querySelector(`.defending .history-item-image-placeholder[data-emoji-name="${defendingNameLower}"]`);
+             if(placeholder) placeholder.classList.remove('loading');
+        }
 
 
         historyList.insertBefore(historyItem, historyList.firstChild);
 
-        // Limit history size
+        // Limit history items
         const maxHistoryItems = 50;
         while (historyList.children.length > maxHistoryItems) {
             historyList.removeChild(historyList.lastChild);
