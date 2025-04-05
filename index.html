@@ -10,35 +10,43 @@
     <div class="container">
         <h1>Rock Paper Anything</h1>
         
-        <div class="game-area">
-            <div class="current-emoji">
-                <h2>Current Emoji to Beat:</h2>
-                <div id="current-emoji-display">🪨</div>
-                <div id="current-emoji-name">rock</div>
-            </div>
-            
-            <div class="input-area">
-                <h2>What beats this?</h2>
-                <input type="text" id="user-input" placeholder="Type something that beats this...">
-                <button id="submit-btn">Submit</button>
-            </div>
-            
-            <div class="emoji-selector">
-                <h3>Or select an emoji:</h3>
-                <div id="emoji-grid"></div>
-            </div>
-            
-            <div class="result-area">
-                <div id="result-message"></div>
-                <div id="score">
-                    <span>Winning streak: <span id="streak-count">0</span></span>
+        <div class="game-layout">
+            <div class="game-area">
+                <div class="current-emoji">
+                    <h2>Current Emoji to Beat:</h2>
+                    <div class="current-display">
+                        <div id="current-emoji-display">🪨</div>
+                        <div id="current-image-display" class="image-container">
+                            <img src="" alt="Current item" id="current-image">
+                            <div class="loading-spinner" id="current-loading-spinner"></div>
+                        </div>
+                    </div>
+                    <div id="current-emoji-name">rock</div>
+                </div>
+                
+                <div class="input-area">
+                    <h2>What beats this?</h2>
+                    <input type="text" id="user-input" placeholder="Type something that beats this...">
+                    <button id="submit-btn">Submit</button>
+                </div>
+                
+                <div class="emoji-selector">
+                    <h3>Or select an emoji:</h3>
+                    <div id="emoji-grid"></div>
+                </div>
+                
+                <div class="result-area">
+                    <div id="result-message"></div>
+                    <div id="score">
+                        <span>Winning streak: <span id="streak-count">0</span></span>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="history">
-            <h3>Battle History</h3>
-            <div id="history-list"></div>
+            
+            <div class="history">
+                <h3>Battle History</h3>
+                <div id="history-list"></div>
+            </div>
         </div>
     </div>
     

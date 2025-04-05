@@ -1,36 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Initial list of emojis with their names
     const emojis = [
-        { emoji: '🪨', name: 'rock' },
-        { emoji: '📄', name: 'paper' },
-        { emoji: '✂️', name: 'scissors' },
-        { emoji: '🔥', name: 'fire' },
-        { emoji: '💧', name: 'water' },
-        { emoji: '🌪️', name: 'tornado' },
-        { emoji: '🌵', name: 'cactus' },
-        { emoji: '🧙‍♂️', name: 'wizard' },
-        { emoji: '🐉', name: 'dragon' },
-        { emoji: '🗡️', name: 'sword' },
-        { emoji: '🛡️', name: 'shield' },
-        { emoji: '🧸', name: 'teddy bear' },
-        { emoji: '🦈', name: 'shark' },
-        { emoji: '🦖', name: 'dinosaur' },
-        { emoji: '🚀', name: 'rocket' },
-        { emoji: '🌞', name: 'sun' },
-        { emoji: '🌚', name: 'moon' },
-        { emoji: '⚡', name: 'lightning' },
-        { emoji: '🌈', name: 'rainbow' },
-        { emoji: '🧊', name: 'ice' }
+        { emoji: '🪨', name: 'rock', imageUrl: '' },
+        { emoji: '📄', name: 'paper', imageUrl: '' },
+        { emoji: '✂️', name: 'scissors', imageUrl: '' },
+        { emoji: '🔥', name: 'fire', imageUrl: '' },
+        { emoji: '💧', name: 'water', imageUrl: '' },
+        { emoji: '🌪️', name: 'tornado', imageUrl: '' },
+        { emoji: '🌵', name: 'cactus', imageUrl: '' },
+        { emoji: '🧙‍♂️', name: 'wizard', imageUrl: '' },
+        { emoji: '🐉', name: 'dragon', imageUrl: '' },
+        { emoji: '🗡️', name: 'sword', imageUrl: '' },
+        { emoji: '🛡️', name: 'shield', imageUrl: '' },
+        { emoji: '🧸', name: 'teddy bear', imageUrl: '' },
+        { emoji: '🦈', name: 'shark', imageUrl: '' },
+        { emoji: '🦖', name: 'dinosaur', imageUrl: '' },
+        { emoji: '🚀', name: 'rocket', imageUrl: '' },
+        { emoji: '🌞', name: 'sun', imageUrl: '' },
+        { emoji: '🌚', name: 'moon', imageUrl: '' },
+        { emoji: '⚡', name: 'lightning', imageUrl: '' },
+        { emoji: '🌈', name: 'rainbow', imageUrl: '' },
+        { emoji: '🧊', name: 'ice', imageUrl: '' }
     ];
 
     // Game state
-    let currentEmoji = emojis[0]; // Start with rock
+    let currentEmoji = emojis[Math.floor(Math.random() * emojis.length)]; // Randomly select initial emoji
     let winningStreak = 0;
     let conversationHistory = [];
 
     // DOM elements
     const currentEmojiDisplay = document.getElementById('current-emoji-display');
     const currentEmojiName = document.getElementById('current-emoji-name');
+    const currentImage = document.getElementById('current-image');
+    const currentLoadingSpinner = document.getElementById('current-loading-spinner');
     const userInput = document.getElementById('user-input');
     const submitBtn = document.getElementById('submit-btn');
     const resultMessage = document.getElementById('result-message');
@@ -41,6 +43,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set initial emoji
     currentEmojiDisplay.textContent = currentEmoji.emoji;
     currentEmojiName.textContent = currentEmoji.name;
+    generateImageForEmoji(currentEmoji);
+
+    // Generate and set image for initial emoji
+    async function generateImageForEmoji(emojiObj) {
+        if (!emojiObj.imageUrl) {
+            try {
+                currentLoadingSpinner.style.display = 'block';
+                const result = await websim.imageGen({
+                    prompt: `A detailed illustration of a ${emojiObj.name}, simple clean background, high quality, digital art style`,
+                    aspect_ratio: "1:1"
+                });
+                emojiObj.imageUrl = result.url;
+            } catch (error) {
+                console.error("Error generating image:", error);
+                emojiObj.imageUrl = '';
+            } finally {
+                currentLoadingSpinner.style.display = 'none';
+            }
+        }
+        
+        currentImage.src = emojiObj.imageUrl || '';
+        currentImage.style.display = emojiObj.imageUrl ? 'block' : 'none';
+    }
 
     // Populate emoji grid
     emojis.forEach(emojiObj => {
@@ -91,7 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (result.suggestedEmoji) {
                     nextEmoji = {
                         emoji: result.suggestedEmoji,
-                        name: userResponse.toLowerCase()
+                        name: userResponse.toLowerCase(),
+                        imageUrl: ''
                     };
                     emojis.push(nextEmoji);
                     
@@ -107,9 +133,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     nextEmoji = {
                         emoji: '❓',
-                        name: userResponse.toLowerCase()
+                        name: userResponse.toLowerCase(),
+                        imageUrl: ''
                     };
                 }
+                
+                // Generate image for the new emoji if it doesn't have one
+                await generateImageForEmoji(nextEmoji);
                 
                 // Add to history
                 addToHistory(currentEmoji, nextEmoji, true);
@@ -118,13 +148,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentEmoji = nextEmoji;
                 currentEmojiDisplay.textContent = currentEmoji.emoji;
                 currentEmojiName.textContent = currentEmoji.name;
+                currentImage.src = currentEmoji.imageUrl || '';
+                currentImage.style.display = currentEmoji.imageUrl ? 'block' : 'none';
             } else {
                 winningStreak = 0;
                 resultMessage.textContent = `Sorry! ${userResponse} doesn't beat ${currentEmoji.name}. ${result.reason}`;
                 resultMessage.style.color = "#f44336";
                 
+                // Create a temporary object for the challenger that didn't win
+                const tempChallenger = {
+                    emoji: '❌',
+                    name: userResponse,
+                    imageUrl: ''
+                };
+                
                 // Add to history with no matching emoji
-                addToHistory(currentEmoji, { emoji: '❌', name: userResponse }, false);
+                addToHistory(currentEmoji, tempChallenger, false);
             }
             
             streakCount.textContent = winningStreak;
@@ -202,10 +241,14 @@ Is the challenger the winner? Why or why not?`
         const reasonText = resultMessage.textContent.split(wasSuccessful ? `Yes! ${challenger.name} beats ${defending.name}! ` : `Sorry! ${challenger.name} doesn't beat ${defending.name}. `)[1] || '';
         
         historyItem.innerHTML = `
-            <div class="history-item-emoji">${defending.emoji}</div>
+            <div class="history-item-emoji">
+                ${defending.emoji}
+                ${defending.imageUrl ? `<img class="history-item-image" src="${defending.imageUrl}" alt="${defending.name}">` : ''}
+            </div>
             <div class="history-item-text">
                 <span class="${result}">${wasSuccessful ? '✓' : '✕'}</span>
-                ${challenger.name} (${challenger.emoji})
+                ${challenger.name} ${challenger.emoji}
+                ${challenger.imageUrl ? `<img class="history-item-image" src="${challenger.imageUrl}" alt="${challenger.name}">` : ''}
                 <div class="history-item-reason">${reasonText}</div>
             </div>
         `;
