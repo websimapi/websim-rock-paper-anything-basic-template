@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set initial emoji
     currentEmojiDisplay.textContent = currentEmoji.emoji;
     currentEmojiName.textContent = currentEmoji.name;
-    generateImageForEmoji(currentEmoji);
+    generateImageForEmoji(currentEmoji, currentImage, currentLoadingSpinner);
 
     // Display emojis for the current page
     function displayEmojiPage(page) {
@@ -421,25 +421,62 @@ document.addEventListener('DOMContentLoaded', () => {
     displayEmojiPage(currentEmojiPage);
 
     // Generate and set image for initial emoji
-    async function generateImageForEmoji(emojiObj) {
-        if (!emojiObj.imageUrl) {
-            try {
-                currentLoadingSpinner.style.display = 'block';
-                const result = await websim.imageGen({
-                    prompt: `A detailed illustration of a ${emojiObj.name}, simple clean background, high quality, digital art style`,
-                    aspect_ratio: "1:1"
-                });
-                emojiObj.imageUrl = result.url;
-            } catch (error) {
-                console.error("Error generating image:", error);
-                emojiObj.imageUrl = '';
-            } finally {
-                currentLoadingSpinner.style.display = 'none';
+    async function generateImageForEmoji(emojiObj, targetImageElement, targetSpinnerElement) {
+        // Use provided elements or default to main display elements
+        const imgElement = targetImageElement || currentImage;
+        const spinnerElement = targetSpinnerElement || currentLoadingSpinner;
+
+        imgElement.style.display = 'none'; // Hide image initially
+        if (spinnerElement) spinnerElement.style.display = 'block'; // Show spinner
+
+        // Check if image URL already exists
+        if (emojiObj.imageUrl) {
+            imgElement.src = emojiObj.imageUrl;
+            imgElement.onerror = () => { // Handle error loading existing URL
+                console.error(`Failed to load image: ${emojiObj.imageUrl}`);
+                emojiObj.imageUrl = ''; // Clear invalid URL
+                if (spinnerElement) spinnerElement.style.display = 'none';
+                // Optionally show a placeholder or leave blank
+                imgElement.style.display = 'none';
+            };
+            imgElement.onload = () => { // Ensure image is loaded before hiding spinner
+                if (spinnerElement) spinnerElement.style.display = 'none';
+                imgElement.style.display = 'block';
             }
+            // If src is already set but might be cached, onerror might not fire reliably on first load
+            // Check if image is already loaded/cached and display immediately
+            if (imgElement.complete && imgElement.naturalWidth > 0) {
+                if (spinnerElement) spinnerElement.style.display = 'none';
+                imgElement.style.display = 'block';
+            }
+
+            return; // Exit if URL exists and is being loaded/displayed
         }
 
-        currentImage.src = emojiObj.imageUrl || '';
-        currentImage.style.display = emojiObj.imageUrl ? 'block' : 'none';
+        // Generate new image if no URL exists
+        try {
+            const result = await websim.imageGen({
+                prompt: `A detailed illustration of a ${emojiObj.name}, simple clean background, high quality, digital art style`,
+                aspect_ratio: "1:1"
+            });
+            emojiObj.imageUrl = result.url;
+            imgElement.src = emojiObj.imageUrl;
+            imgElement.onload = () => { // Show image once loaded
+                if (spinnerElement) spinnerElement.style.display = 'none';
+                imgElement.style.display = 'block';
+            };
+            imgElement.onerror = () => { // Handle error loading newly generated URL
+                console.error(`Failed to load newly generated image: ${emojiObj.imageUrl}`);
+                emojiObj.imageUrl = ''; // Clear invalid URL
+                if (spinnerElement) spinnerElement.style.display = 'none';
+                imgElement.style.display = 'none';
+            };
+        } catch (error) {
+            console.error("Error generating image:", error);
+            emojiObj.imageUrl = ''; // Ensure imageUrl is cleared on error
+            if (spinnerElement) spinnerElement.style.display = 'none';
+            imgElement.style.display = 'none';
+        }
     }
 
     // Handle user submission
@@ -466,6 +503,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const result = await checkIfBeats(userResponse, currentEmoji);
+            let challengerObjectForHistory; // To store the object used in history
 
             if (result.isWinner) {
                 winningStreak++;
@@ -474,55 +512,93 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 let nextEmoji = uniqueEmojis.find(e => e.name.toLowerCase() === userResponse.toLowerCase());
 
-                if (!nextEmoji && result.suggestedEmoji) {
+                if (!nextEmoji && result.suggestedEmoji && result.suggestedEmoji !== '❓') {
+                    // Check if an emoji with the *suggested symbol* already exists
                     const existingWithEmoji = uniqueEmojis.find(e => e.emoji === result.suggestedEmoji);
                     if (existingWithEmoji) {
+                        // If found, use the existing object but potentially update its name if different?
+                        // For simplicity, let's just use the existing one. User can refine later if needed.
                         nextEmoji = existingWithEmoji;
+                        // Ensure name consistency if user input differs slightly but emoji matches
+                        // Optional: nextEmoji.name = userResponse.toLowerCase();
                     } else {
+                        // Create a new emoji object
                         nextEmoji = {
                             emoji: result.suggestedEmoji,
                             name: userResponse.toLowerCase(),
-                            imageUrl: ''
+                            imageUrl: '' // Needs image generation
                         };
                         uniqueEmojis.push(nextEmoji);
+                        // Update pagination if necessary
                         totalEmojiPages = Math.ceil(uniqueEmojis.length / emojisPerPage);
                         if (uniqueEmojis.length > currentEmojiPage * emojisPerPage && uniqueEmojis.length <= (currentEmojiPage + 1) * emojisPerPage) {
+                            // If the new emoji falls on the current page, refresh it
                             displayEmojiPage(currentEmojiPage);
                         } else {
+                            // Otherwise, just update the total pages indicator
                             pageIndicator.textContent = `Page ${currentEmojiPage + 1} of ${totalEmojiPages}`;
                             nextPageBtn.disabled = currentEmojiPage === totalEmojiPages - 1;
                         }
                     }
                 } else if (!nextEmoji) {
+                    // Challenger is abstract or couldn't find a matching emoji
                     nextEmoji = {
                         emoji: '❓',
                         name: userResponse.toLowerCase(),
-                        imageUrl: ''
+                        imageUrl: '' // No image for abstract concepts
                     };
+                    // Note: We don't add abstract '❓' emojis to the main uniqueEmojis list
                 }
 
-                addToHistory(currentEmoji, nextEmoji, true, result.reason);
+                // --- Image Generation before History ---
+                // Ensure the winning emoji (nextEmoji) has an image generated *before* adding to history
+                if (nextEmoji.emoji !== '❓' && !nextEmoji.imageUrl) {
+                    console.log(`Generating image for winner: ${nextEmoji.name}`);
+                    // We use a temporary dummy img/spinner here, as we only need the URL populated.
+                    // The actual display happens later or in history.
+                    await generateImageForEmoji(nextEmoji, null, null);
+                    console.log(`Image generated for ${nextEmoji.name}, URL: ${nextEmoji.imageUrl}`);
+                }
+                // --- End Image Generation ---
 
+                challengerObjectForHistory = nextEmoji; // Use the determined/created object for history
+                addToHistory(currentEmoji, challengerObjectForHistory, true, result.reason);
+
+                // Update the current emoji for the next round ONLY if it's not abstract
                 if (nextEmoji.emoji !== '❓') {
                     currentEmoji = nextEmoji;
                     currentEmojiDisplay.textContent = currentEmoji.emoji;
                     currentEmojiName.textContent = currentEmoji.name;
-                    await generateImageForEmoji(currentEmoji);
+                    // Update the main image display (using the generated URL)
+                    currentImage.src = currentEmoji.imageUrl || '';
+                    currentImage.style.display = currentEmoji.imageUrl ? 'block' : 'none';
+                    currentLoadingSpinner.style.display = 'none'; // Hide spinner if it was shown
                 } else {
-                    resultMessage.textContent += " (Keeping current emoji as winner was abstract)";
+                    // If the winner was abstract, keep the previous currentEmoji
+                    resultMessage.textContent += " (Keeping current item as winner was abstract)";
                 }
             } else {
+                // User lost
                 winningStreak = 0;
                 resultMessage.textContent = `Sorry! ${userResponse} doesn't beat ${currentEmoji.name}. ${result.reason}`;
                 resultMessage.style.color = "#f44336";
 
-                const tempChallenger = uniqueEmojis.find(e => e.name.toLowerCase() === userResponse.toLowerCase()) || {
-                    emoji: '❓',
+                // Find or create a temporary object for the challenger for history display
+                challengerObjectForHistory = uniqueEmojis.find(e => e.name.toLowerCase() === userResponse.toLowerCase()) || {
+                    emoji: result.suggestedEmoji || '❓', // Use suggested emoji if available, else '❓'
                     name: userResponse,
-                    imageUrl: ''
+                    imageUrl: '' // Attempt to generate image only if not abstract and needed
                 };
 
-                addToHistory(currentEmoji, tempChallenger, false, result.reason);
+                // Generate image for the losing challenger *if* it has a concrete emoji and no image yet
+                if (challengerObjectForHistory.emoji !== '❓' && !challengerObjectForHistory.imageUrl) {
+                    console.log(`Generating image for losing challenger: ${challengerObjectForHistory.name}`);
+                    // Use dummy elements as we only need the URL for history
+                    await generateImageForEmoji(challengerObjectForHistory, null, null);
+                    console.log(`Image generated for ${challengerObjectForHistory.name}, URL: ${challengerObjectForHistory.imageUrl}`);
+                }
+
+                addToHistory(currentEmoji, challengerObjectForHistory, false, result.reason);
             }
 
             streakCount.textContent = winningStreak;
@@ -563,23 +639,45 @@ Respond ONLY with valid JSON in this exact format:
                 json: true
             });
 
-            if (!completion.content || !completion.content.startsWith('{') || !completion.content.endsWith('}')) {
-                throw new Error("Received non-JSON response from LLM");
+            let rawResponse = completion.content?.trim();
+            if (!rawResponse || !rawResponse.startsWith('{') || !rawResponse.endsWith('}')) {
+                // Attempt to find JSON within potentially extraneous text (less ideal)
+                const jsonMatch = rawResponse.match(/\{.*\}/s);
+                if (jsonMatch) {
+                    rawResponse = jsonMatch[0];
+                } else {
+                    throw new Error(`Received non-JSON response: ${completion.content}`);
+                }
             }
 
-            const result = JSON.parse(completion.content);
+            const result = JSON.parse(rawResponse);
 
+            // Validate structure
             if (typeof result.isWinner !== 'boolean' || typeof result.reason !== 'string' || typeof result.suggestedEmoji !== 'string') {
-                throw new Error("Parsed JSON has incorrect structure");
+                throw new Error(`Parsed JSON has incorrect structure: ${JSON.stringify(result)}`);
             }
 
-            if (result.suggestedEmoji.length > 2 && result.suggestedEmoji !== '❓') {
-                result.suggestedEmoji = [...result.suggestedEmoji][0];
+            // Sanitize suggestedEmoji: ensure it's a single character or '❓'
+            if (result.suggestedEmoji !== '❓') {
+                const firstChar = [...result.suggestedEmoji][0]; // Handle multi-byte unicode
+                // Basic check if it looks like an emoji (non-alphanumeric, not basic punctuation)
+                // This is imperfect but better than nothing.
+                if (firstChar && firstChar.length === 1 && /\p{Extended_Pictographic}/u.test(firstChar)) {
+                    result.suggestedEmoji = firstChar;
+                } else if (firstChar && firstChar.length > 1 && /\p{Extended_Pictographic}/u.test(firstChar)) {
+                    // Handle multi-character single emojis like flags or complex sequences
+                    result.suggestedEmoji = firstChar; // Keep the sequence if it's a known emoji pattern
+                }
+                else {
+                    console.warn(`LLM suggested invalid emoji '${result.suggestedEmoji}', using '❓'`);
+                    result.suggestedEmoji = '❓';
+                }
             }
 
             return result;
         } catch (error) {
             console.error("Error processing LLM response:", error);
+            // Provide a default fallback structure on error
             return {
                 isWinner: false,
                 reason: "Could not determine the outcome due to an internal error.",
@@ -595,21 +693,43 @@ Respond ONLY with valid JSON in this exact format:
         const resultClass = wasSuccessful ? 'win' : 'lose';
         const resultIcon = wasSuccessful ? '✅' : '❌';
 
-        const challengerEmoji = challenger.emoji || '❓';
-        const challengerName = challenger.name || 'Unknown';
-        const challengerImageUrl = challenger.imageUrl || '';
+        // Ensure we have valid data, provide defaults if necessary
+        const defendingEmoji = defending?.emoji || '❓';
+        const defendingName = defending?.name || 'Unknown';
+        const defendingImageUrl = defending?.imageUrl || '';
+
+        const challengerEmoji = challenger?.emoji || '❓';
+        const challengerName = challenger?.name || 'Unknown';
+        const challengerImageUrl = challenger?.imageUrl || ''; // Use the potentially newly generated URL
+
+        // --- Image HTML with Fallback ---
+        const defendingImageHtml = defendingImageUrl
+            ? `<img class="history-item-image" src="${defendingImageUrl}" alt="${defendingName}" title="${defendingName}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.style.display='block'; this.nextElementSibling.style.display='none';">`
+            : '';
+        const defendingPlaceholderHtml = `<div class="history-item-image-placeholder" title="${defendingName}" style="${defendingImageUrl ? 'display: none;' : 'display: flex;'}"><span>${defendingEmoji}</span></div>`; // Show emoji in placeholder
+
+        const challengerImageHtml = challengerImageUrl
+            ? `<img class="history-item-image" src="${challengerImageUrl}" alt="${challengerName}" title="${challengerName}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.style.display='block'; this.nextElementSibling.style.display='none';">`
+            : '';
+        const challengerPlaceholderHtml = `<div class="history-item-image-placeholder" title="${challengerName}" style="${challengerImageUrl ? 'display: none;' : 'display: flex;'}"><span>${challengerEmoji}</span></div>`;
 
         historyItem.innerHTML = `
             <div class="history-item-pair">
                 <div class="history-item-entity defending">
-                    <span class="history-emoji">${defending.emoji}</span>
-                    ${defending.imageUrl ? `<img class="history-item-image" src="${defending.imageUrl}" alt="${defending.name}" title="${defending.name}">` : `<div class="history-item-image-placeholder" title="${defending.name}"></div>`}
-                    <span class="history-name">${defending.name}</span>
+                    <span class="history-emoji">${defendingEmoji}</span>
+                    <div class="image-wrapper">
+                        ${defendingImageHtml}
+                        ${defendingPlaceholderHtml}
+                    </div>
+                    <span class="history-name">${defendingName}</span>
                 </div>
                 <div class="history-vs">vs</div>
                 <div class="history-item-entity challenger">
                     <span class="history-emoji">${challengerEmoji}</span>
-                    ${challengerImageUrl ? `<img class="history-item-image" src="${challengerImageUrl}" alt="${challengerName}" title="${challengerName}">` : `<div class="history-item-image-placeholder" title="${challengerName}"></div>`}
+                    <div class="image-wrapper">
+                        ${challengerImageHtml}
+                        ${challengerPlaceholderHtml}
+                    </div>
                     <span class="history-name">${challengerName}</span>
                 </div>
             </div>
@@ -618,9 +738,12 @@ Respond ONLY with valid JSON in this exact format:
                 <div class="history-item-reason">${reasonText || 'No reason provided.'}</div>
             </div>
         `;
+        // --- End Image HTML ---
+
 
         historyList.insertBefore(historyItem, historyList.firstChild);
 
+        // Limit history size
         const maxHistoryItems = 50;
         while (historyList.children.length > maxHistoryItems) {
             historyList.removeChild(historyList.lastChild);
